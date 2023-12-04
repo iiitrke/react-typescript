@@ -1,0 +1,6 @@
+.footer{
+    position: sticky;
+    position: -webkit-sticky;
+    bottom: 0;
+    background-color: aqua;
+}
