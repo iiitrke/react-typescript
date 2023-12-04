@@ -28,4 +28,21 @@
     display: inline-block;
   }
 
+  .fa{
+    /* display: inline !important; */
+   display:  inline;
+   float: right;
+  }
 
+
+.icon-archive{
+  float:left; 
+}
+.text{
+  float:left;
+  margin-left: 5px; 
+}
+
+.icon-archive, .text{
+  font-size: 20px;
+}

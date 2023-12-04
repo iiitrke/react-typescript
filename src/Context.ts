@@ -5,14 +5,16 @@ import { contextType } from "react-modal";
 
 
 export type contextType = {
-    size: string,
-    name:string
-}
-// 
-// const [value, setValue ]= () => useState<contextType>(null);
+    innerHeight: number,
+    innerWidth:number
+} 
 
 
-export const AppContext = createContext<contextType|null>(null);
+const value = {innerHeight: window.innerHeight, innerWidth: window.innerWidth};
+
+
+export const AppContext = createContext<contextType>(value);
 export const useAppContext= () => {
+   
     return useContext(AppContext);
 }

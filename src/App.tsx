@@ -17,13 +17,23 @@ import HomePageLayoutAsFC from './Layouts/HomePageLayout';
 import { LandingPageAsFC } from './pages/LandingPage';
 import { LoginPageLayoutFC } from './Layouts/LoginPageLayout';
 import { LoginPage } from './pages/LoginPage';
-import { AppContext , contextType} from './Context';
+import { AppContext , contextType, useAppContext} from './Context';
 
 
 function App() {
-
+const context = useAppContext();
+ const [bpv, setBpv]=useState<contextType>({innerHeight: context.innerHeight, innerWidth: useAppContext()?.innerWidth});
+    function reportWindowSize():contextType{
+    var height= window.innerHeight;
+    var width =window.innerWidth;
+    const v={innerHeight: height, innerWidth:width}
+    setBpv(v);
+    return v;
  
-  let bpv:contextType= {size: 'lg', name:'kkk'};
+ }
+ 
+ window.onresize= reportWindowSize;
+ // let bpv:contextType= {size: 'lg', name:'kkk'};
  
  
   return (
