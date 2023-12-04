@@ -6,14 +6,9 @@ import MobileTopMenu from "./MobileTopMenu";
 export const NavbarAsFC : React.FC =() =>{
 
     return (
-
-
-     
-      <div className="navigation"  >
- 
-      <DesktopTopMen />
+ <>
+   <DesktopTopMen />
       <MobileTopMenu />
-
- </div>
+  </>
     )
 }

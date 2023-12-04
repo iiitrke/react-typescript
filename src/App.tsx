@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
  
@@ -18,24 +18,19 @@ import { LandingPageAsFC } from './pages/LandingPage';
 import { LoginPageLayoutFC } from './Layouts/LoginPageLayout';
 import { LoginPage } from './pages/LoginPage';
 import { AppContext , contextType, useAppContext} from './Context';
+import Courses from './pages/Courses';
+import CoursePageLayout from './Layouts/CoursePageLayout';
 
 
 function App() {
 const context = useAppContext();
  const [bpv, setBpv]=useState<contextType>({innerHeight: context.innerHeight, innerWidth: useAppContext()?.innerWidth});
-    function reportWindowSize():contextType{
-    var height= window.innerHeight;
-    var width =window.innerWidth;
-    const v={innerHeight: height, innerWidth:width}
-    setBpv(v);
-    return v;
+useEffect(() => {
+  setBpv({innerHeight: window.innerHeight, innerWidth: window.innerWidth})
+}, [window.innerWidth]);
+
  
- }
- 
- window.onresize= reportWindowSize;
- // let bpv:contextType= {size: 'lg', name:'kkk'};
- 
- 
+
   return (
 
     <AppContext.Provider value={bpv}> 
@@ -45,9 +40,14 @@ const context = useAppContext();
     <Routes>
     <Route path="/" element={<HomeLayoutAsFC />}>
         <Route index element={<HomePageAsFC /> } /> 
+        <Route  path='courses'  element={<Courses />}></Route>
         <Route  path='landing'  element={<LandingPageAsFC />}></Route>
         <Route path='book' element={<BookAsFC />} > </Route>
         <Route path='books' element={<BookListAsFC  />} > </Route>
+    </Route>
+    <Route path="/courses" element={<CoursePageLayout />}>
+        <Route index element={<Courses /> } /> 
+        
     </Route>
 
     <Route path='/login' element={<LoginPageLayoutFC />} >

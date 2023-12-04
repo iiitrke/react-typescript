@@ -15,13 +15,7 @@
 }
 
 
-.is-sticky {
-    position: fixed;
-    top: 0;
-    background-color: green;
-    z-index: 9999;
-    /* width: 100%; */
-}
+
 
 .banner {
 

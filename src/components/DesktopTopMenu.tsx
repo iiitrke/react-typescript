@@ -1,38 +1,62 @@
 import { Link } from "react-router-dom";
-import './DesktopTopMenu.css';
-import {FaHome, FaBook} from 'react-icons/fa';
+import "./DesktopTopMenu.css";
+import { FaHome, FaBook } from "react-icons/fa";
 import { useAppContext } from "../Context";
+import { useEffect } from "react";
 
 const DesktopTopMen = () => {
+  const width: number = useAppContext().innerWidth;
+  function isSticky() {
+    const navbar = document.getElementById("navbar");
+    if (window.scrollY >= 40) {
+      navbar?.classList.add( "is-sticky");
+    } else {
+      navbar?.classList.remove("is-sticky");
+    }
+  }
 
-const width:number =useAppContext().innerWidth;
+  useEffect(() => {
+    // console.log("In Use Effect");
+    window.addEventListener("scroll", isSticky);
+    return () => {
+      // console.log("In Use Effect Return ");
+      window.removeEventListener("scroll", isSticky);
+    };
+  }, []);
 
-if(width >= 700)
-{
-  return (
-    <>
-   
-      <div >
-        <ul id="menuItems">
-          <li> 
-
-            <Link to="/"> <div className="icon-archive"><FaHome /></div> <div className="text">Home</div> </Link>
-          </li>
-          <li>
-            {" "}
-            <Link to="/books" >  <div className="icon-archive"><FaBook /></div> <div className="text">Books</div>  </Link>
-          </li>
-        </ul>
-      </div>
-    
-    </>
-  );
-} else {
-  return (
-    <>
-    </>
-  );
-}
+  if (width >= 700) {
+    return (
+      <>
+        <nav className="navbar  container" id="navbar" >
+          <h1 className="logo">Itasca Technologies</h1>
+          <ul className="items">
+            <li className="item">
+              <FaHome className="icon"/>
+              <Link to="/">Home</Link>
+            </li>
+            <li className="item">
+              <FaBook className="icon" />
+              <Link to="/courses">Courses</Link>
+            </li>
+            <li className="item">
+              <FaBook className="icon" />
+              <Link to="/books">Registration</Link>
+            </li>
+            <li className="item">
+              <FaBook className="icon" />
+              <Link to="/books">Contactus</Link>
+            </li>
+            {/* <li className="item">
+              <FaBook className="icon" />
+              <Link to="/books">Books</Link>
+            </li> */}
+          </ul>
+        </nav>
+      </>
+    );
+  } else {
+    return <></>;
+  }
 };
 
 export default DesktopTopMen;
