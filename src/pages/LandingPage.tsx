@@ -1,11 +1,9 @@
-import React from "react"
-import HomePageLayoutAsFC from "../Layouts/HomePageLayout";
+import React from "react";
 
-export const LandingPageAsFC: React.FC = ()=>{
-
-    return (
+export const LandingPageAsFC: React.FC = () => {
+  return (
     <div>
-
-        <h1>Landin Page</h1> 
-    </div>);
-}
+      <h1>Landin Page</h1>
+    </div>
+  );
+};

@@ -6,19 +6,22 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import App1 from "./App1";
-import { AppContext } from "./Context";
+import { Provider } from "react-redux";
+import store from "./redux/store";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
-
 );
+
 root.render(
-  <React.StrictMode>
-    
-    <div className="container mx-auto">
+  // <React.StrictMode>
+
+  <div className="container mx-auto">
+    <Provider store={store}>
       <App />
-    </div>
-  </React.StrictMode>
+    </Provider>
+  </div>
+  // </React.StrictMode>
   // <React.StrictMode>
   //   <BrowserRouter>
   //   <App1  name="abc"/>
