@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import "./DesktopTopMenu.css";
+// import "./DesktopTopMenu.css";
 import { FaHome, FaBook } from "react-icons/fa";
 import React, { useEffect, useRef } from "react";
-import { relative } from "path";
+
 import { menuItemsData } from "../menuItemsData";
 
 const DesktopTopMen = () => {

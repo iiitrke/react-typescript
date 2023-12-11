@@ -9,9 +9,15 @@ import Courses from "./pages/Courses";
 export const routes = createBrowserRouter([
   {
     element: <HomePageLayoutAsFC />,
+    path: "/",
     children: [
       { path: "/", element: <HomePageAsFC /> },
-      { path: "courses", element: <Courses /> },
+      { path: "/courses", element: <Courses /> },
     ],
+  },
+  {
+    element: <CoursePageLayout />,
+    path: "/courses",
+    children: [{ index: true, element: <Courses /> }],
   },
 ]);
