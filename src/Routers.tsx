@@ -10,7 +10,7 @@ export const routes = createBrowserRouter([
   {
     element: <HomePageLayoutAsFC />,
     children: [
-      { path: "/", index: true, element: <HomePageAsFC /> },
+      { path: "/", element: <HomePageAsFC /> },
       { path: "courses", element: <Courses /> },
     ],
   },
