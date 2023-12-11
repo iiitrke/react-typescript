@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { menuItemsData } from "../../menuItemsData";
 import { MobileMenuItems } from "./MobileMenuItems";
+import { FaBars, FaHamburger, FaHdd, FaXbox } from "react-icons/fa";
 
 const MobileNav = () => {
   const depthLevel = 0;
@@ -27,9 +28,12 @@ const MobileNav = () => {
       <button
         className="mobile-nav__menu-button"
         type="button"
-        onClick={() => setShowMenu((prev) => !prev)}
+        onClick={() => {
+          setShowMenu((prev) => !prev);
+        }}
       >
-        Menu
+        {showMenu ? <FaXbox /> : <FaBars />}
+        {""}
       </button>
 
       {showMenu && (
