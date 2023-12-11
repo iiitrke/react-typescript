@@ -1,35 +1,67 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
-import "./index.css";
-
+import "./App.css";
 import App from "./App";
-import reportWebVitals from "./reportWebVitals";
-import App1 from "./App1";
-import { Provider } from "react-redux";
-import store from "./redux/store";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Root } from "./routes/root";
+import ErrorPage from "./error-page";
+import About from "./routes/about";
+import Services from "./routes/services";
+import WebDesign from "./routes/web-design";
+import WebDev from "./routes/web-dev";
+import Frontend from "./routes/frontend";
+import Php from "./routes/php";
+import NodeJs from "./routes/node";
+import SEO from "./routes/seo";
 
-const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
-);
+const router = createBrowserRouter([
+  {
+    element: <Root />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/",
+        element: <App />,
+      },
+      {
+        path: "services",
+        element: <Services />,
+      },
+      {
+        path: "about",
+        element: <About />,
+      },
+      {
+        path: "web-design",
+        element: <WebDesign />,
+      },
+      {
+        path: "web-dev",
+        element: <WebDev />,
+      },
+      {
+        path: "frontend",
+        element: <Frontend />,
+      },
+      {
+        path: "node",
+        element: <NodeJs />,
+      },
+      {
+        path: "php",
+        element: <Php />,
+      },
+      {
+        path: "seo",
+        element: <SEO />,
+      },
+    ],
+  },
+]);
 
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  // <React.StrictMode>
-
-  <div className="container mx-auto">
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </div>
-  // </React.StrictMode>
-  // <React.StrictMode>
-  //   <BrowserRouter>
-  //   <App1  name="abc"/>
-  //   </BrowserRouter>
-  // </React.StrictMode>
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
