@@ -4,23 +4,19 @@ export const menuItemsData = [
     url: "/",
   },
   {
-    title: "Courses",
-
+    title: "Services",
+    url: "/services",
     submenu: [
       {
-        title: "Angular",
-        url: "/courses",
+        title: "Web Design",
+        url: "web-design",
       },
       {
-        title: "React",
-        url: "/courses",
-      },
-      {
-        title: "Java",
-
+        title: "Web Development",
+        url: "web-dev",
         submenu: [
           {
-            title: "Core Java",
+            title: "Frontend",
             url: "frontend",
           },
           {
@@ -45,11 +41,7 @@ export const menuItemsData = [
     ],
   },
   {
-    title: "Consultancy",
-    url: "/about",
-  },
-  {
     title: "About",
-    url: "/courses",
+    url: "/about",
   },
 ];
