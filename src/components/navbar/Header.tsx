@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Navbar from "./Navbar";
-import { MobileNav } from "./MobileNav";
 
-const Header = (props: { sticky: boolean }) => {
+import { MobileNav } from "./MobileNav";
+import Navbar from "./Navbar";
+
+const Header = (props: { sticky?: boolean }) => {
   const [stick, setStick] = useState(false);
 
   const scrollHandler = () => {
