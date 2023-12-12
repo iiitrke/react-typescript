@@ -1,7 +1,7 @@
 import React, { HTMLAttributes, useEffect, useState } from "react";
 
-import "../../appBannerData";
-import { appBannerData } from "../../appBannerData";
+import "../../data/appBannerData";
+import { appBannerData } from "../../data/appBannerData";
 import { background } from "@storybook/design-system/dist/components/shared/styles";
 import { relative } from "path";
 import "./banner.css";

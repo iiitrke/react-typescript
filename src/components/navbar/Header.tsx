@@ -26,7 +26,7 @@ const Header = (props: { sticky?: boolean }) => {
       <header className={stick ? "sticky" : ""}>
         <div className="nav-area">
           <Link to="/" className="logo">
-            Logo
+            Itasca Technologies
           </Link>
 
           {/* for large screens */}

@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./App.css";
-import App from "./App";
+import "./index.css";
+import App from "./routes/app/App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Root } from "./routes/root";
 import { ErrorPage } from "./routes/error-page";
@@ -13,6 +13,10 @@ import { Frontend } from "./routes/frontend";
 import { Php } from "./routes/php";
 import { NodeJs } from "./routes/node";
 import { SEO } from "./routes/seo";
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
 
 const router = createBrowserRouter([
   {

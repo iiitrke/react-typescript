@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { menuItemsData } from "../../menuItemsData";
+import { menuItemsData } from "../../data/menuItemsData";
 import { MobileMenuItems } from "./MobileMenuItems";
 import { FaBars, FaHamburger, FaHdd, FaXbox } from "react-icons/fa";
 
