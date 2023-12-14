@@ -1,11 +1,13 @@
-import { applyMiddleware, createStore } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
-import createSagaMiddleware from "redux-saga";
-import { helloSaga } from "./sagas";
+import userReducer from "./userSlice";
 
-const sagaMiddleware = createSagaMiddleware();
+// const sagaMiddleware = createSagaMiddleware();
 
-const store = configureStore({ reducer: {} });
+/// store
+export const store = configureStore({ reducer: { users: userReducer } });
 
+/// types
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;
+
+/// hooks
