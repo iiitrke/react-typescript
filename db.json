@@ -38,5 +38,18 @@
     "name": "Suresh",
     "email": "sanjay@yahoo.com"
   }
+],
+
+"intro-md":[
+  {
+    "image": "training.png",
+    "title": "## Training",
+    "desc": "Intro *Description*"
+  },
+  {
+    "image": "training.png",
+    "title": "Development",
+    "desc": "Intro Description Development"
+  }
 ]
 }

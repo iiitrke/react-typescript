@@ -16,21 +16,22 @@ const initialState: IntroState = {
   intros: [],
 };
 
-const introReducer = (
+const reducer = (
   state: IntroState = initialState,
   action: IntroAction
 ): IntroState => {
   switch (action.type) {
     case IntroActionType.INTRO_FETCH_REPO: {
-      if (state.cached) {
-        return state;
-      }
+      // if (state.cached) {
+      //   return state;
+      // }
       return { cached: false, loading: true, error: null, intros: [] };
     }
     case IntroActionType.INTRO_FETCH_REPO_SUCCESS: {
+      console.log("in intro scuccess");
       return {
         cached: true,
-        loading: true,
+        loading: false,
         error: null,
         intros: action.payload,
       };
@@ -49,4 +50,4 @@ const introReducer = (
   }
 };
 
-export default introReducer;
+export default reducer;

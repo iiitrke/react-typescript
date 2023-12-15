@@ -21,7 +21,6 @@ const reducer = (
 ): UserState => {
   switch (action.type) {
     case ActionType.SEARCH_REPOSITRIES: {
-      console.log("IN SEARCH IN REDUCER");
       return (state = { loading: true, error: null, users: [] });
     }
     case ActionType.SEARCH_REPOSITRIES_SUCCESS: {
@@ -29,7 +28,7 @@ const reducer = (
       console.log(action.payload);
 
       return {
-        loading: true,
+        loading: false,
         error: null,
         users: action.payload,
       };
