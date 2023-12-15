@@ -2,18 +2,18 @@ import { IntroActionType } from "../action-types/intro-action-types";
 import { IntroAction } from "../actions/IntroAction";
 import { IntroModel } from "../models/Intro-type";
 
-interface IntroState {
+export interface IntroState {
   cached: boolean;
   loading: boolean;
   error: string | null;
-  intros: IntroModel[];
+  data: IntroModel[];
 }
 
 const initialState: IntroState = {
   cached: false,
   loading: false,
   error: null,
-  intros: [],
+  data: [],
 };
 
 const reducer = (
@@ -25,7 +25,7 @@ const reducer = (
       // if (state.cached) {
       //   return state;
       // }
-      return { cached: false, loading: true, error: null, intros: [] };
+      return { cached: false, loading: true, error: null, data: [] };
     }
     case IntroActionType.INTRO_FETCH_REPO_SUCCESS: {
       console.log("in intro scuccess");
@@ -33,7 +33,7 @@ const reducer = (
         cached: true,
         loading: false,
         error: null,
-        intros: action.payload,
+        data: action.payload,
       };
     }
 
@@ -42,7 +42,7 @@ const reducer = (
         cached: false,
         loading: false,
         error: action.payload,
-        intros: [],
+        data: [],
       };
     default: {
       return state;

@@ -1,5 +1,5 @@
 export interface IntroModel {
-  icon: string;
-  heading: string;
-  intro: string;
+  image: string;
+  title: string;
+  desc: string;
 }

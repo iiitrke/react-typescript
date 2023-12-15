@@ -3,8 +3,8 @@ import userReducer from "./userReducer";
 import { default as introReducer } from "./introReducer";
 
 const reducers = combineReducers({
-  userReducer: userReducer,
-  introReducer: introReducer,
+  userRepository: userReducer,
+  introRepository: introReducer,
 });
 
 export default reducers;
