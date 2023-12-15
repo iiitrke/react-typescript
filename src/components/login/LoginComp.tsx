@@ -1,4 +1,4 @@
-import { Box, Card, Input, InputLabel, TextField } from "@mui/material";
+import { Box, Button, Card, Input, InputLabel, TextField } from "@mui/material";
 import React from "react";
 
 export class Loginform extends React.Component {
@@ -6,26 +6,15 @@ export class Loginform extends React.Component {
     return (
       <>
         <Box>
-          <div>
-            <TextField
-              error
-              id="outlined-error"
-              label="User Name"
-              variant="filled"
-              //   defaultValue="Hello World"
-            />
-          </div>
-          <div>
-            <TextField
-              error
-              id="outlined-error"
-              label="Password"
-              variant="filled"
-
-              //   defaultValue="Hello World"
-            />
-          </div>
-          <div></div>
+          <Box>
+            <TextField error id="username" label="User Name" variant="filled" />
+          </Box>
+          <Box>
+            <TextField error id="password" label="Password" variant="filled" />
+          </Box>
+          <Box>
+            <Button variant="contained">Contained</Button>
+          </Box>
         </Box>
       </>
     );

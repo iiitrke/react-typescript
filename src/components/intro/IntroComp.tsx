@@ -22,7 +22,7 @@ const IntroComp = () => {
   return (
     <>
       {/* <div className="intro"> */}
-      <Box flexDirection={"row"} sx={{ minWidth: "200" }}>
+      <Box sx={{ minWidth: "100", maxWidth: "sm" }}>
         {data.map((intro: IntroModel, index) => (
           <div>
             <Card key={index}>
