@@ -2,6 +2,7 @@ import { Banner } from "../../components/banner/Banner";
 import { TrainingService } from "./training-service";
 import "./App.css";
 import { IntroComp } from "../../components/intro/IntroComp";
+import { Loginform } from "../../components/login/LoginComp";
 
 // import { Switch } from "react-router-dom";
 function App() {
@@ -13,6 +14,7 @@ function App() {
       </div> */}
       {/* <UserPage /> */}
       <IntroComp />
+      <Loginform />
     </div>
   );
 }

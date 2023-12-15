@@ -48,7 +48,12 @@
   },
   {
     "image": "training.png",
-    "title": "Development",
+    "title": "## Development",
+    "desc": "Intro Description Development"
+  },
+  {
+    "image": "training.png",
+    "title": "## Web Development",
     "desc": "Intro Description Development"
   }
 ]

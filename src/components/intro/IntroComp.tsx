@@ -6,7 +6,7 @@ import { RootState } from "../../state";
 import { IntroState } from "../../state/reducers/introReducer";
 import { IntroModel } from "../../state/models/Intro-type";
 import ReactMarkdown from "react-markdown";
-import { Card, CardContent, CardMedia } from "@mui/material";
+import { Box, Card, CardContent, CardMedia } from "@mui/material";
 import "./Intro.css";
 const IntroComp = () => {
   const { searchRepositories } = useUserActions();
@@ -21,7 +21,8 @@ const IntroComp = () => {
   }
   return (
     <>
-      <div className="intro">
+      {/* <div className="intro"> */}
+      <Box flexDirection={"row"} sx={{ minWidth: "200" }}>
         {data.map((intro: IntroModel, index) => (
           <div>
             <Card key={index}>
@@ -37,7 +38,8 @@ const IntroComp = () => {
             </Card>
           </div>
         ))}
-      </div>
+        {/* </div> */}
+      </Box>
       <button className="btn" onClick={handleFetchUser}>
         Fetch User1
       </button>
