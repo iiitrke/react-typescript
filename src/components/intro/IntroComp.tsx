@@ -6,6 +6,7 @@ import { RootState } from "../../state";
 import { IntroState } from "../../state/reducers/introReducer";
 
 import ReactMarkdown from "react-markdown";
+import { Card, CardContent } from "@mui/material";
 const IntroComp = () => {
   const { searchRepositories } = useUserActions();
   const { introRepository } = useIntroAction();
@@ -19,8 +20,14 @@ const IntroComp = () => {
   }
   return (
     <div>
-      {data.map((intro) => (
-        <ReactMarkdown children={intro.title} />
+      {data.map((intro, index) => (
+        <div>
+          <Card key={index}>
+            <CardContent>
+              <ReactMarkdown children={intro.title} />
+            </CardContent>
+          </Card>
+        </div>
       ))}
       <button className="btn" onClick={handleFetchUser}>
         Fetch User1
