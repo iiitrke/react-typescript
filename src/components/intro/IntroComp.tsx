@@ -4,14 +4,14 @@ import { useIntroAction } from "../../state/hooks/useIntroAction";
 import { useTypedSeletor } from "../../state/hooks/useTypedSelector";
 import { RootState } from "../../state";
 import { IntroState } from "../../state/reducers/introReducer";
-const UserPage = () => {
+
+import ReactMarkdown from "react-markdown";
+const IntroComp = () => {
   const { searchRepositories } = useUserActions();
   const { introRepository } = useIntroAction();
-
-  const repoIntro: IntroState = useTypedSeletor(
+  const { loading, error, cached, data } = useTypedSeletor(
     (state) => state.introRepository
   );
-
   function handleFetchUser() {
     searchRepositories();
     introRepository();
@@ -19,7 +19,9 @@ const UserPage = () => {
   }
   return (
     <div>
-      {repoIntro.data.map((intro) => intro.title)}
+      {data.map((intro) => (
+        <ReactMarkdown children={intro.title} />
+      ))}
       <button className="btn" onClick={handleFetchUser}>
         Fetch User1
       </button>
@@ -27,4 +29,4 @@ const UserPage = () => {
   );
 };
 
-export { UserPage };
+export { IntroComp };
