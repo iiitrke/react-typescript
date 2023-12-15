@@ -18,3 +18,11 @@ const useWindowSize = (): breakpoints => {
 };
 
 export default useWindowSize;
+
+// const useWindowSize =()=>{
+//     const breakpoint:[number, number]=[10,10];
+
+//     breakpoint[0]=25;
+//     breakpoint[1]=40
+//   return breakpoint;
+//   }

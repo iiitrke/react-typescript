@@ -1,7 +1,7 @@
 import { Banner } from "../../components/banner/Banner";
 import { TrainingService } from "./training-service";
 import "./App.css";
-import UserPage from "../../components/UserPage";
+import { UserPage } from "../../components/Userpage";
 
 // import { Switch } from "react-router-dom";
 function App() {
