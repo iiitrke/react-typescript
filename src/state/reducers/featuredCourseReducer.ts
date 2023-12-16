@@ -37,10 +37,8 @@ const featuredCourseReducer = (
         error: action.payload,
         data: [],
       };
-
-    default:
-      return state;
   }
+  return state;
 };
 
 export default featuredCourseReducer;

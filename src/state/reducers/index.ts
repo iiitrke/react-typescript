@@ -6,7 +6,7 @@ import featuredCourseReducer from "./featuredCourseReducer";
 const reducers = combineReducers({
   userRepository: userReducer,
   introRepository: introReducer,
-  featuredCoursesRepository: featuredCourseReducer,
+  featuredcourseCombine: featuredCourseReducer,
 });
 
 export default reducers;

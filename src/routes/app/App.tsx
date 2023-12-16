@@ -1,9 +1,8 @@
 import { Banner } from "../../components/banner/Banner";
-import { TrainingService } from "./training-service";
-import "./App.css";
+import { FeaturCouComp } from "../../components/featuredcourse/featuredcoursecomp";
 import { IntroComp } from "../../components/intro/IntroComp";
 import { Loginform } from "../../components/login/LoginComp";
-import { FeaturedCourse } from "../../components/feature-courses/FeaturedCourses";
+import "./App.css";
 
 // import { Switch } from "react-router-dom";
 function App() {
@@ -22,9 +21,9 @@ function App() {
         Data, Accenture etc.{" "}
       </p>
 
-      <FeaturedCourse />
       <IntroComp />
       <Loginform />
+      <FeaturCouComp />
     </div>
   );
 }

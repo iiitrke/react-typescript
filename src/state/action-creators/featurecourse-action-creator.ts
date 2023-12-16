@@ -1,16 +1,15 @@
-import { Dispatch } from "redux";
-import { IntroAction } from "../actions/IntroAction";
-import {} from "../action-types/intro-action-types";
-import { FeaturedCoursesActionType } from "../action-types/featured-course-types";
-import { API_INTRO } from "../../URLConstants";
 import axios from "axios";
+import { Dispatch } from "redux";
+import { API_FEATURED_COURSES, API_INTRO } from "../../URLConstants";
+import { FeaturedCoursesActionType } from "../action-types/featured-course-types";
+
 import { FeaturedCourseAction } from "../actions/featured-courses-action";
 
 export const featuredcoursesCre = () => {
   return async (dispatch: Dispatch<FeaturedCourseAction>) => {
     dispatch({ type: FeaturedCoursesActionType.FEATUREDCOURSE_FETCH_REPO });
     try {
-      const { data } = await axios.get(API_INTRO);
+      const { data } = await axios.get(API_FEATURED_COURSES);
       console.log(data);
       dispatch({
         type: FeaturedCoursesActionType.FEATUREDCOURSE_FETCH_REPO_SUCCESS,

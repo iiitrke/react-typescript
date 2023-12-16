@@ -4,24 +4,23 @@ import { useUserActions } from "../../hooks/useUserActions";
 import { useIntroAction } from "../../state/hooks/useIntroAction";
 import { useTypedSeletor } from "../../state/hooks/useTypedSelector";
 import { IntroModel } from "../../state/models/Intro-type";
-import "./Intro.css";
+import "./featuredcoursecomp.css";
 import { useFeaturedCourseAction } from "../../state/hooks/useFeaturedCourseAction";
-const IntroComp = () => {
-  const { searchRepositories } = useUserActions();
-  const { introRepository } = useIntroAction();
+import { FeaturedCourseModel } from "../../state/models/Featured-course.model";
+import React, { useEffect } from "react";
+const FeaturCouComp: React.FC = () => {
+  const { featuredcoursesCre } = useFeaturedCourseAction();
 
-  const { loading, error, cached, data } = useTypedSeletor(
-    (state) => state.introRepository
+  const { data, loading, error } = useTypedSeletor(
+    (state) => state.featuredcourseCombine
   );
-  const data1 = useTypedSeletor((state) => state.featuredcourseCombine);
 
-  function handleFetchUser() {
-    searchRepositories();
-    introRepository();
+  // Equivalent of componentDidMount
+  useEffect(() => {
+    console.log("fgfgfgf");
+    featuredcoursesCre();
+  }, []);
 
-    console.log("HandleFetchUser in UserPage");
-    console.log(data1);
-  }
   return (
     <>
       {loading && <p> Loading</p>}
@@ -34,29 +33,32 @@ const IntroComp = () => {
         justifyContent={"space-between"}
         marginTop={5}
       >
-        {data.map((intro: IntroModel, index) => (
+        {data.map((data: FeaturedCourseModel, index) => (
           <Box key={index} minWidth={250} maxWidth={340}>
             <Card key={index}>
               <CardMedia
                 component="img"
-                image={`./images/intro/${intro.image}`}
+                image={`./images/intro/${data.image}`}
               />
               <CardContent>
                 <Typography noWrap={false} component="div">
-                  <ReactMarkdown children={intro.title} />
-                  <ReactMarkdown children={intro.desc} />
+                  {data.desc}
                 </Typography>
+                {/* <Typography noWrap={false} component="div">
+                  <ReactMarkdown children={data.title} />
+                  <ReactMarkdown children={intro.desc} />
+                </Typography> */}
               </CardContent>
             </Card>
           </Box>
         ))}
         {/* </div> */}
       </Box>
-      <button className="btn" onClick={handleFetchUser}>
+      {/* <button className="btn" onClick={handleFetchUser}>
         Fetch User1
-      </button>
+      </button> */}
     </>
   );
 };
 
-export { IntroComp };
+export { FeaturCouComp };
