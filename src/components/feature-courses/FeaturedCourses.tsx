@@ -1,20 +1,20 @@
 import { Component, useEffect } from "react";
 import { useFeaturedCourseAction } from "../../state/hooks/useFeaturedCourseAction";
 import { useTypedSeletor } from "../../state/hooks/useTypedSelector";
+import { featuredCoureseRepositories } from "../../state/action-creators/featured-courses-creator";
 
 const FeaturedCourse: React.FC = () => {
-  const { featuredCoureseCreator } = useFeaturedCourseAction;
-  // featuredCoureseCreator();
-  const { loading, error, cached, data } = useTypedSeletor(
-    (state) => state.featuredCoursesRepository
-  );
+  const { featuredCoureseRepositories } = useFeaturedCourseAction();
 
-  useEffect(() => {
-    featuredCoureseCreator();
-  });
+  const data = useTypedSeletor((state) => state.featuredCoursesRepository);
 
   console.log(data);
-  console.log(error);
+  useEffect(() => {
+    featuredCoureseRepositories();
+  });
+
+  // console.log(data);
+  // console.log(error);
   return <>gg</>;
 };
 

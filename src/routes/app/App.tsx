@@ -21,9 +21,10 @@ function App() {
         having a good track record. Our students are placed in SAP Lab, NTT
         Data, Accenture etc.{" "}
       </p>
+
+      <FeaturedCourse />
       <IntroComp />
       <Loginform />
-      <FeaturedCourse />
     </div>
   );
 }

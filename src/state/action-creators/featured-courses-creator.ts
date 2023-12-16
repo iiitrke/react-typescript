@@ -4,7 +4,7 @@ import { FeaturedCoursesActionType } from "../action-types/featured-course-types
 import axios from "axios";
 import { API_FEATURED_COURSES } from "../../URLConstants";
 
-export const featuredCoureseCreator = () => {
+export const featuredCoureseRepositories = () => {
   return async (dispatch: Dispatch<FeaturedCourseAction>) => {
     dispatch({ type: FeaturedCoursesActionType.FEATUREDCOURSE_FETCH_REPO });
     try {

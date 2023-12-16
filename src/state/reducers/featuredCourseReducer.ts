@@ -22,10 +22,9 @@ const featuredCourseReducer = (
 ): FeaturedCourseState => {
   switch (action.type) {
     case FeaturedCoursesActionType.FEATUREDCOURSE_FETCH_REPO:
-      return { ...state, cached: false, loading: true, error: null, data: [] };
+      return { cached: false, loading: true, error: null, data: [] };
     case FeaturedCoursesActionType.FEATUREDCOURSE_FETCH_REPO_SUCCESS:
       return {
-        ...state,
         cached: true,
         loading: false,
         error: null,
@@ -33,7 +32,6 @@ const featuredCourseReducer = (
       };
     case FeaturedCoursesActionType.FEATUREDCOURSE_FETCH_REPO_ERROR:
       return {
-        ...state,
         cached: false,
         loading: false,
         error: action.payload,
