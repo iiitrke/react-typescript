@@ -44,17 +44,62 @@
   {
     "image": "training.png",
     "title": "## Training",
-    "desc": "Intro *Description*"
+    "desc": "We have the best faculty with excellent Lab Infrastructure along with detailed course material."
   },
   {
     "image": "training.png",
     "title": "## Development",
-    "desc": "Intro Description Development"
+    "desc": "We have the best faculty with excellent Lab Infrastructure along with detailed course material."
   },
   {
     "image": "training.png",
     "title": "## Web Development",
-    "desc": "Intro Description Development"
+    "desc": "We have the best faculty with excellent Lab Infrastructure along with detailed course material."
+  },
+  {
+    "image": "training.png",
+    "title": "## Class Room Training",
+    "desc": "We have the best faculty with excellent Lab Infrastructure along with detailed course material."
+  },
+  {
+    "image": "training.png",
+    "title": "## Online Training",
+    "desc": "We have the best faculty with excellent Lab Infrastructure along with detailed course material."
+  },
+  {
+    "image": "training.png",
+    "title": "## Corporate Training",
+    "desc": "We have the best faculty with excellent Lab Infrastructure along with detailed course material."
   }
+],
+
+"featuredCourse":[
+  {
+
+    "id":1,
+    "image": "string",
+    "link": "string",
+    "desc": "string"
+  },
+
+{
+
+  "id":1,
+  "image": "string",
+  "link": "string",
+  "desc": "string"
+},{
+
+  "id":1,
+  "image": "string",
+  "link": "string",
+  "desc": "string"
+},{
+
+  "id":1,
+  "image": "string",
+  "link": "string",
+  "desc": "string"
+}
 ]
 }

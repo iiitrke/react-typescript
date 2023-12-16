@@ -1,12 +1,9 @@
-import { useDispatch } from "react-redux";
+import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
+import ReactMarkdown from "react-markdown";
 import { useUserActions } from "../../hooks/useUserActions";
 import { useIntroAction } from "../../state/hooks/useIntroAction";
 import { useTypedSeletor } from "../../state/hooks/useTypedSelector";
-import { RootState } from "../../state";
-import { IntroState } from "../../state/reducers/introReducer";
 import { IntroModel } from "../../state/models/Intro-type";
-import ReactMarkdown from "react-markdown";
-import { Box, Card, CardContent, CardMedia } from "@mui/material";
 import "./Intro.css";
 const IntroComp = () => {
   const { searchRepositories } = useUserActions();
@@ -21,22 +18,31 @@ const IntroComp = () => {
   }
   return (
     <>
-      {/* <div className="intro"> */}
-      <Box sx={{ minWidth: "100", maxWidth: "sm" }}>
+      {loading && <p> Loading</p>}
+      {error && <p> Error</p>}
+      <Box
+        flexDirection={"row"}
+        display={"flex"}
+        flexWrap={"wrap"}
+        gap={6}
+        justifyContent={"space-between"}
+        marginTop={5}
+      >
         {data.map((intro: IntroModel, index) => (
-          <div>
+          <Box key={index} minWidth={250} maxWidth={340}>
             <Card key={index}>
               <CardMedia
                 component="img"
                 image={`./images/intro/${intro.image}`}
               />
-
               <CardContent>
-                <ReactMarkdown children={intro.title} />
-                <ReactMarkdown children={intro.desc} />
+                <Typography noWrap={false} component="div">
+                  <ReactMarkdown children={intro.title} />
+                  <ReactMarkdown children={intro.desc} />
+                </Typography>
               </CardContent>
             </Card>
-          </div>
+          </Box>
         ))}
         {/* </div> */}
       </Box>
