@@ -8,7 +8,6 @@ const Header = (props: { sticky?: boolean }) => {
   const [stick, setStick] = useState(false);
 
   const scrollHandler = () => {
-    console.log("ScrollHandler Called");
     if (window.scrollY > 120) {
       setStick(true);
     } else {
@@ -17,7 +16,6 @@ const Header = (props: { sticky?: boolean }) => {
   };
 
   useEffect(() => {
-    console.log("USE EFFECT CALLED");
     window.addEventListener("scroll", scrollHandler);
   }, []);
 

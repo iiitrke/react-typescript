@@ -1,25 +1,47 @@
 import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
-import ReactMarkdown from "react-markdown";
-import { useUserActions } from "../../hooks/useUserActions";
-import { useIntroAction } from "../../state/hooks/useIntroAction";
-import { useTypedSeletor } from "../../state/hooks/useTypedSelector";
-import { IntroModel } from "../../state/models/Intro-type";
-import "./featuredcoursecomp.css";
+import React, { useEffect, useState } from "react";
 import { useFeaturedCourseAction } from "../../state/hooks/useFeaturedCourseAction";
+import { useTypedSeletor } from "../../state/hooks/useTypedSelector";
 import { FeaturedCourseModel } from "../../state/models/Featured-course.model";
-import React, { useEffect } from "react";
+import "./featuredcoursecomp.css";
+import { log } from "console";
 const FeaturCouComp: React.FC = () => {
   const { featuredcoursesCre } = useFeaturedCourseAction();
-
   const { data, loading, error } = useTypedSeletor(
     (state) => state.featuredcourseCombine
   );
+  const [mydata, setMydata] = useState<FeaturedCourseModel[]>([]);
 
   // Equivalent of componentDidMount
   useEffect(() => {
-    console.log("fgfgfgf");
+    console.log("Fetching Called");
     featuredcoursesCre();
   }, []);
+
+  useEffect(() => {
+    const swapInterverl = setInterval(() => {
+      console.log("interval invoked", mydata);
+      const temp = mydata;
+      if (temp.length > 1) {
+        const firstSlice: FeaturedCourseModel | undefined = temp.shift();
+        if (firstSlice) {
+          temp.push(firstSlice);
+        }
+        setMydata(temp);
+      }
+    }, 1000);
+    return () => {
+      clearInterval(swapInterverl);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (data && data.length > 0) {
+      setMydata(data);
+
+      console.log("Data received", data, mydata);
+    }
+  }, [data]);
 
   return (
     <>
@@ -32,17 +54,18 @@ const FeaturCouComp: React.FC = () => {
         gap={6}
         justifyContent={"space-between"}
         marginTop={5}
+        height={300}
       >
-        {data.map((data: FeaturedCourseModel, index) => (
+        {mydata.map((item: FeaturedCourseModel, index) => (
           <Box key={index} minWidth={250} maxWidth={340}>
             <Card key={index}>
               <CardMedia
                 component="img"
-                image={`./images/intro/${data.image}`}
+                image={`./images/intro/${item.image}`}
               />
               <CardContent>
                 <Typography noWrap={false} component="div">
-                  {data.desc}
+                  {item.desc}
                 </Typography>
                 {/* <Typography noWrap={false} component="div">
                   <ReactMarkdown children={data.title} />
