@@ -1,53 +1,71 @@
-import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import {
+  Box,
+  Card,
+  CardContent,
+  CardMedia,
+  Container,
+  Grid,
+  Typography,
+} from "@mui/material";
+import React, { Ref, useEffect, useRef, useState } from "react";
 import { useFeaturedCourseAction } from "../../state/hooks/useFeaturedCourseAction";
 import { useTypedSeletor } from "../../state/hooks/useTypedSelector";
 import { FeaturedCourseModel } from "../../state/models/Featured-course.model";
 import "./featuredcoursecomp.css";
 import { log } from "console";
+import { stat } from "fs";
 const FeaturCouComp: React.FC = () => {
   const { featuredcoursesCre } = useFeaturedCourseAction();
   const { data, loading, error } = useTypedSeletor(
     (state) => state.featuredcourseCombine
   );
-  const [mydata, setMydata] = useState<FeaturedCourseModel[]>([]);
-
-  // Equivalent of componentDidMount
+  const divRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    console.log("Fetching Called");
     featuredcoursesCre();
   }, []);
 
-  useEffect(() => {
-    const swapInterverl = setInterval(() => {
-      console.log("interval invoked", mydata);
-      const temp = mydata;
-      if (temp.length > 1) {
-        const firstSlice: FeaturedCourseModel | undefined = temp.shift();
-        if (firstSlice) {
-          temp.push(firstSlice);
-        }
-        setMydata(temp);
-      }
-    }, 1000);
-    return () => {
-      clearInterval(swapInterverl);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (data && data.length > 0) {
-      setMydata(data);
-
-      console.log("Data received", data, mydata);
-    }
-  }, [data]);
-
   return (
     <>
-      {loading && <p> Loading</p>}
+      {/* {loading && <p> Loading</p>}
       {error && <p> Error</p>}
+      <h2> Featured Courses</h2> */}
       <Box
+        sx={{
+          bgcolor: "background.paper",
+          color: "text.secondary",
+          py: { xs: 0, sm: 0, md: 2 },
+          marginTop: "20px",
+          borderTop: "1px solid",
+          borderColor: "divider",
+        }}
+      >
+        <Container maxWidth={false}>
+          {loading && <p> Loading</p>}
+          {error && <p> Error</p>}
+          <h2> Featured Courses</h2>
+          <Grid
+            container
+            spacing={{ xs: 2, sm: 4, md: 4, lg: 6, xl: 8 }}
+            justifyContent="space-between"
+          >
+            {data.map((item: FeaturedCourseModel, index) => (
+              <Grid item xs={12} sm={6} md={3}>
+                <Card key={index}>
+                  <CardMedia component="img" image={item.image} />
+                  <CardContent>
+                    <Typography noWrap={false} component="div">
+                      {item.desc}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </Box>
+
+      {/* <Box
+        ref={divRef}
         flexDirection={"row"}
         display={"flex"}
         flexWrap={"wrap"}
@@ -56,30 +74,19 @@ const FeaturCouComp: React.FC = () => {
         marginTop={5}
         height={300}
       >
-        {mydata.map((item: FeaturedCourseModel, index) => (
+        {data.map((item: FeaturedCourseModel, index) => (
           <Box key={index} minWidth={250} maxWidth={340}>
             <Card key={index}>
-              <CardMedia
-                component="img"
-                image={`./images/intro/${item.image}`}
-              />
+              <CardMedia component="img" image={item.image} />
               <CardContent>
                 <Typography noWrap={false} component="div">
                   {item.desc}
                 </Typography>
-                {/* <Typography noWrap={false} component="div">
-                  <ReactMarkdown children={data.title} />
-                  <ReactMarkdown children={intro.desc} />
-                </Typography> */}
               </CardContent>
             </Card>
           </Box>
         ))}
-        {/* </div> */}
-      </Box>
-      {/* <button className="btn" onClick={handleFetchUser}>
-        Fetch User1
-      </button> */}
+      </Box> */}
     </>
   );
 };

@@ -22,7 +22,6 @@ const Banner = ({ data, ...props }: IBannerProps) => {
         setImageIndex(imageIndex + 1);
       }
     }, 5000);
-
     return () => clearTimeout(timeout1);
   });
 
@@ -30,8 +29,8 @@ const Banner = ({ data, ...props }: IBannerProps) => {
     <div
       className="banner"
       style={{
-        height: "80vh",
-        position: "relative",
+        // height: "80vh",
+        // position: "relative",
         backgroundImage: `url(${bannerData[imageIndex].imageUrl}`,
       }}
     >

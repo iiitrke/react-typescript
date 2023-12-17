@@ -42,33 +42,33 @@
 
 "intro-md":[
   {
-    "image": "training.png",
-    "title": "## Training",
+    "image": "java.jpeg",
+    "title": "Training",
+    "desc": "We have the best faculty with excellent Lab Infrastructure along with detailed course material."
+  },
+  {
+    "image": "aws.jpeg",
+    "title": "Development",
+    "desc": "We have the best faculty with excellent Lab Infrastructure along with detailed course material."
+  },
+  {
+    "image": "datascience.jpeg",
+    "title": "Web Development",
+    "desc": "We have the best faculty with excellent Lab Infrastructure along with detailed course material."
+  },
+  {
+    "image": "fspthon.jpeg",
+    "title": "Class Room Training",
     "desc": "We have the best faculty with excellent Lab Infrastructure along with detailed course material."
   },
   {
     "image": "training.png",
-    "title": "## Development",
+    "title": "Online Training",
     "desc": "We have the best faculty with excellent Lab Infrastructure along with detailed course material."
   },
   {
     "image": "training.png",
-    "title": "## Web Development",
-    "desc": "We have the best faculty with excellent Lab Infrastructure along with detailed course material."
-  },
-  {
-    "image": "training.png",
-    "title": "## Class Room Training",
-    "desc": "We have the best faculty with excellent Lab Infrastructure along with detailed course material."
-  },
-  {
-    "image": "training.png",
-    "title": "## Online Training",
-    "desc": "We have the best faculty with excellent Lab Infrastructure along with detailed course material."
-  },
-  {
-    "image": "training.png",
-    "title": "## Corporate Training",
+    "title": "Corporate Training",
     "desc": "We have the best faculty with excellent Lab Infrastructure along with detailed course material."
   }
 ],
@@ -77,7 +77,7 @@
   {
 
     "id":1,
-    "image": "string1",
+    "image": "/images/featuredcourse/python.jpg",
     "link": "string1",
     "desc": "string1"
   },
@@ -85,21 +85,24 @@
 {
 
   "id":1,
-  "image": "string2",
+  "image": "/images/featuredcourse/devops.jpg",
   "link": "string2",
   "desc": "string2"
-},{
+},
+{
 
   "id":1,
-  "image": "string3",
-  "link": "string3",
-  "desc": "string3"
-},{
+  "image": "/images/featuredcourse/python.jpg",
+  "link": "string1",
+  "desc": "string1"
+},
 
-  "id":1,
-  "image": "string4",
-  "link": "string4",
-  "desc": "string4"
+{
+
+"id":1,
+"image": "/images/featuredcourse/devops.jpg",
+"link": "string2",
+"desc": "string2"
 }
 ]
 }

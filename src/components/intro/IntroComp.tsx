@@ -6,6 +6,7 @@ import { useTypedSeletor } from "../../state/hooks/useTypedSelector";
 import { IntroModel } from "../../state/models/Intro-type";
 import "./Intro.css";
 import { useFeaturedCourseAction } from "../../state/hooks/useFeaturedCourseAction";
+import { useEffect } from "react";
 const IntroComp = () => {
   const { searchRepositories } = useUserActions();
   const { introRepository } = useIntroAction();
@@ -15,17 +16,22 @@ const IntroComp = () => {
   );
   const data1 = useTypedSeletor((state) => state.featuredcourseCombine);
 
-  function handleFetchUser() {
-    searchRepositories();
+  useEffect(() => {
     introRepository();
+  }, []);
 
-    console.log("HandleFetchUser in UserPage");
-    console.log(data1);
-  }
+  // function handleFetchUser() {
+  //   searchRepositories();
+  //   introRepository();
+
+  //   console.log("HandleFetchUser in UserPage");
+  //   console.log(data1);
+  // }
   return (
     <>
       {loading && <p> Loading</p>}
       {error && <p> Error</p>}
+
       <Box
         flexDirection={"row"}
         display={"flex"}
@@ -52,9 +58,9 @@ const IntroComp = () => {
         ))}
         {/* </div> */}
       </Box>
-      <button className="btn" onClick={handleFetchUser}>
+      {/* <button className="btn" onClick={handleFetchUser}>
         Fetch User1
-      </button>
+      </button> */}
     </>
   );
 };

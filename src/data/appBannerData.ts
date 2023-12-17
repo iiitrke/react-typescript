@@ -4,8 +4,8 @@ export interface IappBannerData {
 }
 
 export const appBannerData: IappBannerData[] = [
-  { imageUrl: "image1.png", heading1: "React Js" },
-  { imageUrl: "image2.png", heading1: "Angular JS" },
-  { imageUrl: "image3.jpg", heading1: "React Js" },
-  { imageUrl: "image4.jpg", heading1: "React Js" },
+  { imageUrl: "/images/banner/aws.jpeg", heading1: "React Js" },
+  { imageUrl: "/images/banner/image2.png", heading1: "Angular JS" },
+  { imageUrl: "/images/banner/datascience.jpeg", heading1: "React Js" },
+  { imageUrl: "/images/banner/fspthon.jpeg", heading1: "React Js" },
 ];

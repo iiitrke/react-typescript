@@ -1,9 +1,10 @@
 .banner{
     position: relative;
-    height: 89vh;
+    height: 40vh;
+    width: 100%;
 
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-position: center;
     -webkit-transition: background-image 0.2s ease-in-out;
     transition: background-image .8s ease-in-out;
