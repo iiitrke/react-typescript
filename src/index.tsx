@@ -20,6 +20,7 @@ import "@fontsource/roboto/700.css";
 import { Provider } from "react-redux";
 import { store } from "./state";
 import { CoursesFC } from "./routes/courses/CoursesFC";
+import { JavaFC } from "./routes/courses/java/JavaFC";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,7 @@ const router = createBrowserRouter([
       {
         path: "courses",
         element: <CoursesFC />,
+        children: [{ path: "corejava", element: <JavaFC /> }],
       },
       {
         path: "services",

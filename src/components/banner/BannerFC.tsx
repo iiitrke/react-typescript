@@ -31,8 +31,8 @@ export const BannerFC: React.FC = () => {
           backgroundImage: `url(${bannerData[imageIndex].imageUrl})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          height: "60vh",
-          width: "auto",
+          height: "70vh",
+          width: "100%",
           backgroundRepeat: "no-repeat",
         }}
       ></Paper>
