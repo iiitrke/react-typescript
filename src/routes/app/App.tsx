@@ -1,5 +1,4 @@
 import { Box, Container, Grid } from "@mui/material";
-import { Banner } from "../../components/banner/Banner";
 import { FeaturCouComp } from "../../components/featuredcourse/featuredcoursecomp";
 import { IntroComp } from "../../components/intro/IntroComp";
 import { IntroFC } from "../../components/intro/IntroFC";
