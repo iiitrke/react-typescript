@@ -9,12 +9,11 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useEffect } from "react";
-import { useUserActions } from "../../state/hooks/useUserActions";
+import ReactMarkdown from "react-markdown";
 import { useIntroAction } from "../../state/hooks/useIntroAction";
 import { useTypedSeletor } from "../../state/hooks/useTypedSelector";
+import { useUserActions } from "../../state/hooks/useUserActions";
 import { IntroModel } from "../../state/models/Intro-type";
-import ReactMarkdown from "react-markdown";
-import { spacing } from "@storybook/design-system/dist/components/shared/styles";
 
 export const IntroFC: React.FC = () => {
   const { searchRepositories } = useUserActions();
