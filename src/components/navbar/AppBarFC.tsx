@@ -12,8 +12,22 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import { Link } from "react-router-dom";
 
-const pages = ["Products", "Pricing", "Blog"];
+interface IPages {
+  name: string;
+  link?: string;
+}
+const pages: IPages[] = [
+  { name: "Home", link: "/" },
+  { name: "Training", link: "training" },
+  // { name: "Services", link: "development" },
+
+  { name: "Software Development", link: "development" },
+  { name: "Digital Marketing", link: "development" },
+  { name: "About us", link: "about" },
+];
+
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function AppBarFC() {
@@ -48,7 +62,7 @@ function AppBarFC() {
             variant="h6"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href="/"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -59,7 +73,7 @@ function AppBarFC() {
               textDecoration: "none",
             }}
           >
-            LOGO
+            Itasca Technologies
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -91,9 +105,9 @@ function AppBarFC() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+              {pages.map((page: { name: string }) => (
+                <MenuItem key={page.name} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{page.name}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -103,7 +117,7 @@ function AppBarFC() {
             variant="h5"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href="/"
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
@@ -115,16 +129,29 @@ function AppBarFC() {
               textDecoration: "none",
             }}
           >
-            LOGO
+            Itasca Technologies
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
-                key={page}
+                key={page.name}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                {page}
+                {/* <Typography noWrap component="a" href="/about"> */}
+                {/* <Link
+                  href="/about"
+                  color="inherit"
+                  style={{ textDecoration: "none" }}
+                > */}
+                <Link
+                  style={{ textDecoration: "none", color: "inherit" }}
+                  to={page.link!}
+                >
+                  {page.name}
+                </Link>
+                {/* </Link> */}
+                {/* </Typography> */}
               </Button>
             ))}
           </Box>

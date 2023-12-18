@@ -29,7 +29,7 @@ export const BannerFC: React.FC = () => {
       <Paper
         sx={{
           backgroundImage: `url(${bannerData[imageIndex].imageUrl})`,
-          backgroundSize: "cover",
+          backgroundSize: "contain",
           backgroundPosition: "center",
           height: "70vh",
           width: "100%",
