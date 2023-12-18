@@ -5,6 +5,7 @@ import {
   CardMedia,
   Container,
   Grid,
+  Link,
   Typography,
 } from "@mui/material";
 import React, { useEffect } from "react";
@@ -50,25 +51,30 @@ export const IntroFC: React.FC = () => {
           <Grid container spacing={6} justifyContent="space-between">
             {data.map((intro: IntroModel, index) => (
               <Grid item xs={12} sm={6} md={4}>
-                <Card key={index}>
-                  <CardMedia
-                    component="img"
-                    image={`./images/intro/${intro.image}`}
-                  />
-                  <CardContent>
-                    <Typography variant="h5" color="text.primary" gutterBottom>
-                      <ReactMarkdown children={intro.title} />
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      color="text.primary"
-                      gutterBottom
-                    >
-                      <ReactMarkdown children={intro.desc} />
-                    </Typography>
-                  </CardContent>
-                </Card>
-
+                <Link href="/abc">
+                  <Card key={index}>
+                    <CardMedia
+                      component="img"
+                      image={`./images/intro/${intro.image}`}
+                    />
+                    <CardContent>
+                      <Typography
+                        variant="h5"
+                        color="text.primary"
+                        gutterBottom
+                      >
+                        <ReactMarkdown children={intro.title} />
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        color="text.primary"
+                        gutterBottom
+                      >
+                        <ReactMarkdown children={intro.desc} />
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </Link>
                 {/* Add your logo component or image here */}
               </Grid>
             ))}

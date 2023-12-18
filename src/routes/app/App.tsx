@@ -1,3 +1,4 @@
+import { Box, Container, Grid } from "@mui/material";
 import { Banner } from "../../components/banner/Banner";
 import { FeaturCouComp } from "../../components/featuredcourse/featuredcoursecomp";
 import { IntroComp } from "../../components/intro/IntroComp";
@@ -8,19 +9,30 @@ import "./App.css";
 // import { Switch } from "react-router-dom";
 function App() {
   return (
-    <div>
-      <Banner />
-      {/* <div className="trg">
+    <Box
+      flexDirection={"row"}
+      display={"flex"}
+      flexWrap={"wrap"}
+      gap={6}
+      justifyContent={"space-between"}
+      marginTop={5}
+    >
+      <Container maxWidth={false}>
+        {/* <div> */}
+        <Banner />
+        {/* <div className="trg">
         <TrainingService />
       </div> */}
-      {/* <UserPage /> */}
+        {/* <UserPage /> */}
 
-      {/* <IntroComp /> */}
-      <IntroFC />
+        {/* <IntroComp /> */}
+        <IntroFC />
 
-      <FeaturCouComp />
-      {/* <Loginform /> */}
-    </div>
+        <FeaturCouComp />
+        {/* <Loginform /> */}
+        {/* </div> */}
+      </Container>
+    </Box>
   );
 }
 
