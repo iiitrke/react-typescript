@@ -5,6 +5,7 @@ import { IntroComp } from "../../components/intro/IntroComp";
 import { IntroFC } from "../../components/intro/IntroFC";
 import { Loginform } from "../../components/login/LoginComp";
 import "./App.css";
+import { BannerFC } from "../../components/banner/BannerFC";
 
 // import { Switch } from "react-router-dom";
 function App() {
@@ -19,7 +20,8 @@ function App() {
     >
       <Container maxWidth={false}>
         {/* <div> */}
-        <Banner />
+        {/* <Banner /> */}
+        <BannerFC />
         {/* <div className="trg">
         <TrainingService />
       </div> */}

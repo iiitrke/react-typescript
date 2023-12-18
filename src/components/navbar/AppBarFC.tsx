@@ -16,7 +16,7 @@ import AdbIcon from "@mui/icons-material/Adb";
 const pages = ["Products", "Pricing", "Blog"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
-function DropdownFC() {
+function AppBarFC() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -163,4 +163,4 @@ function DropdownFC() {
     </AppBar>
   );
 }
-export { DropdownFC };
+export { AppBarFC };

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { MobileNav } from "./MobileNav";
 import Navbar from "./Navbar";
-import { DropdownFC } from "./DropdownFC";
+// import { DropdownFC } from "./AppBarFC";
 
 const Header = (props: { sticky?: boolean }) => {
   const [stick, setStick] = useState(false);
@@ -22,19 +22,19 @@ const Header = (props: { sticky?: boolean }) => {
 
   return (
     <>
-      <header className={stick ? "sticky" : ""}>
-        <div className="nav-area">
-          {/* <Link to="/" className="logo">
+      {/* <header className={stick ? "sticky" : ""}> */}
+      {/* <div className="nav-area"> */}
+      {/* <Link to="/" className="logo">
             Itasca Technologies
           </Link> */}
 
-          {/* for large screens */}
-          {/* <Navbar /> */}
-          <DropdownFC />
-          {/* for small screens */}
-          <MobileNav />
-        </div>
-      </header>
+      {/* for large screens */}
+      {/* <Navbar /> */}
+
+      {/* for small screens */}
+      <MobileNav />
+      {/* </div> */}
+      {/* </header> */}
     </>
   );
 };

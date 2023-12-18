@@ -1,9 +1,10 @@
 import { Outlet } from "react-router-dom";
 
 export const CoursesFC = () => {
-  <>
-    {" "}
-    <p> Courses</p>
-    <Outlet />
-  </>;
+  return (
+    <>
+      <p> Courses</p>
+      <Outlet />
+    </>
+  );
 };

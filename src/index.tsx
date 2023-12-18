@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
+// import "./index.css";
 import App from "./routes/app/App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Root } from "./routes/root";
+import { Root } from "./root";
 import { ErrorPage } from "./routes/error-page";
 import { About } from "./routes/about";
 import { Services } from "./routes/services";
@@ -19,15 +19,21 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import { Provider } from "react-redux";
 import { store } from "./state";
+import { CoursesFC } from "./routes/courses/CoursesFC";
 
 const router = createBrowserRouter([
   {
     element: <Root />,
+
     errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
         element: <App />,
+      },
+      {
+        path: "courses",
+        element: <CoursesFC />,
       },
       {
         path: "services",
