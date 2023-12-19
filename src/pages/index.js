@@ -1,5 +1,5 @@
 import {useRouter} from 'next/router';
-import { AppRootLayout } from './layout';
+ import AppRootLayout from './layout';
 import { BannerFC } from '../components/banner/BannerFC';
 export default function Page() {
 
