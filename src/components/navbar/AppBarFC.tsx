@@ -12,7 +12,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 interface IPages {
   name: string;
@@ -144,12 +144,12 @@ function AppBarFC() {
                   color="inherit"
                   style={{ textDecoration: "none" }}
                 > */}
-                <Link
+                {/* <Link
                   style={{ textDecoration: "none", color: "inherit" }}
                   to={page.link!}
                 >
                   {page.name}
-                </Link>
+                </Link> */}
                 {/* </Link> */}
                 {/* </Typography> */}
               </Button>

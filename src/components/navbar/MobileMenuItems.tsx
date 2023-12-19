@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import MobileDropdown from "./MobileDropdown";
 
 const MobileMenuItems = ({ items, depthLevel, showMenu, setShowMenu }: any) => {
@@ -24,9 +24,9 @@ const MobileMenuItems = ({ items, depthLevel, showMenu, setShowMenu }: any) => {
             aria-haspopup="menu"
             aria-expanded={dropdown ? "true" : "false"}
           >
-            <Link to={items.url} onClick={closeDropdown}>
-              {items.title}
-            </Link>
+            {/* <Link to={items.url} onClick={closeDropdown}> */}
+            {items.title}
+            {/* </Link> */}
             <div onClick={(e) => toggleDropdown(e)}>
               {dropdown ? (
                 <span className="arrow-close" />
@@ -64,7 +64,10 @@ const MobileMenuItems = ({ items, depthLevel, showMenu, setShowMenu }: any) => {
           />
         </>
       ) : (
-        <Link to={items.url}>{items.title}</Link>
+        // <Link to={items.url}>
+        // {items.title}
+        // </Link>
+        "dummy"
       )}
     </li>
   );
