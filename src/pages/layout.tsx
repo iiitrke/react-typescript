@@ -9,7 +9,6 @@ const AppRootLayout = ({ children }: { children: React.ReactNode }) => {
       <body>
         <AppBarFC />
         {children}
-        <FooterAsFC />
       </body>
     </html>
   );
