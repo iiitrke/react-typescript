@@ -1,10 +1,11 @@
 import React from "react";
+import Navbar from "../components/navbar/Navbar";
 
 export const AppRootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en">
       <body>
-        <h1> Hello India</h1>
+        <Navbar />
         {children}
       </body>
     </html>
