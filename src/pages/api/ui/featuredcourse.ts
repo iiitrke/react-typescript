@@ -1,28 +1,10 @@
-export const featuredcourse = [
-  {
-    id: 1,
-    image: "/images/featuredcourse/python.jpg",
-    link: "string1",
-    desc: "string1",
-  },
-
-  {
-    id: 1,
-    image: "/images/featuredcourse/devops.jpg",
-    link: "string2",
-    desc: "string2",
-  },
-  {
-    id: 1,
-    image: "/images/featuredcourse/python.jpg",
-    link: "string1",
-    desc: "string1",
-  },
-
-  {
-    id: 1,
-    image: "/images/featuredcourse/devops.jpg",
-    link: "string2",
-    desc: "string2",
-  },
-];
+import { NextApiRequest, NextApiResponse } from "next/types";
+import { featuredcourseData } from "../../../data/featuredCoursesData";
+export default function handler(req: NextApiRequest, res: NextApiResponse) {
+  const { method } = req;
+  switch (method) {
+    case "GET":
+      res.status(200).json(featuredcourseData);
+      break;
+  }
+}
