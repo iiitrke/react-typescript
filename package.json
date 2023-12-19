@@ -43,7 +43,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build":"next build --output build",
+    "build":"next build --output public",
     "start": "next start", 
     "json": "json-server --watch db.json --port 8000"
  
