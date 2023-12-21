@@ -24,8 +24,8 @@ const reducer = (
       return (state = { loading: true, error: null, users: [] });
     }
     case ActionType.SEARCH_REPOSITRIES_SUCCESS: {
-      console.log("In Succes");
-      console.log(action.payload);
+      // console.log("In Succes");
+      // console.log(action.payload);
 
       return {
         loading: false,

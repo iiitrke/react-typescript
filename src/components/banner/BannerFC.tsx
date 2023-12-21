@@ -34,6 +34,7 @@ export const BannerFC: React.FC = () => {
           height: "70vh",
           width: "100%",
           backgroundRepeat: "no-repeat",
+          marginTop: "10",
         }}
       ></Paper>
     </>

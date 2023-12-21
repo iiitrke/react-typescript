@@ -7,14 +7,10 @@ import { store } from "../state";
 
 const AppRootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <html lang="en">
-      <body>
-        <Provider store={store}>
-          <AppBarFC />
-          {children}
-        </Provider>
-      </body>
-    </html>
+    <Provider store={store}>
+      <AppBarFC />
+      {children}
+    </Provider>
   );
 };
 

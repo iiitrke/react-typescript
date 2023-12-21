@@ -47,9 +47,14 @@ export const IntroFC: React.FC = () => {
         }}
       >
         <Container maxWidth={false}>
-          <Grid container spacing={6} justifyContent="space-between">
+          <Grid
+            container
+            spacing={6}
+            justifyContent="space-between"
+            key="intor-root-grid"
+          >
             {data.map((intro: IntroModel, index) => (
-              <Grid item xs={12} sm={6} md={4}>
+              <Grid key={index} item xs={12} sm={6} md={4}>
                 <Link href="/abc">
                   <Card key={index}>
                     <CardMedia
@@ -62,14 +67,14 @@ export const IntroFC: React.FC = () => {
                         color="text.primary"
                         gutterBottom
                       >
-                        <ReactMarkdown children={intro.title} />
+                        {intro.title}
                       </Typography>
                       <Typography
                         variant="body2"
                         color="text.primary"
                         gutterBottom
                       >
-                        <ReactMarkdown children={intro.desc} />
+                        {intro.desc}
                       </Typography>
                     </CardContent>
                   </Card>

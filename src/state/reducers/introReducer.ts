@@ -28,7 +28,7 @@ const reducer = (
       return { cached: false, loading: true, error: null, data: [] };
     }
     case IntroActionType.INTRO_FETCH_REPO_SUCCESS: {
-      console.log("in intro scuccess");
+      // console.log("in intro scuccess");
       return {
         cached: true,
         loading: false,

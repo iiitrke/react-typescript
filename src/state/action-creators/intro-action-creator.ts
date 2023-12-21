@@ -9,7 +9,7 @@ export const introRepository = () => {
     dispatch({ type: IntroActionType.INTRO_FETCH_REPO });
     try {
       const { data } = await axios.get(API_INTRO);
-      console.log(data);
+      // console.log(data);
       dispatch({
         type: IntroActionType.INTRO_FETCH_REPO_SUCCESS,
         payload: data,
