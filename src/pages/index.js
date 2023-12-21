@@ -9,7 +9,6 @@ export default function Page() {
 
 
 const navigation = useRouter();
-
     return (
 <AppRootLayout>
      <BannerFC />
