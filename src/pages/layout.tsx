@@ -5,8 +5,13 @@ import { FooterAsFC } from "../components/Footer";
 import { Provider } from "react-redux";
 import { store } from "../state";
 
-const RootLayout = ({ children }: { children: React.ReactNode }) => {
-  return <>{children}</>;
+const AppRootLayout = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <Provider store={store}>
+      <AppBarFC />
+      {children}
+    </Provider>
+  );
 };
 
-export default RootLayout;
+export default AppRootLayout;
