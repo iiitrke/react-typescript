@@ -25,3 +25,14 @@ yarn-debug.log*
 yarn-error.log*
 .vercel
 .env*.local
+.next/build-manifest.json
+.next/trace
+.next/cache/.tsbuildinfo
+.next/cache/webpack/client-production/0.pack
+.next/cache/webpack/client-production/index.pack
+.next/cache/webpack/server-production/0.pack
+.next/cache/webpack/server-production/index.pack
+.next/server/middleware-build-manifest.js
+.next/server/middleware-react-loadable-manifest.js
+.next/server/next-font-manifest.js
+.next/server/pages-manifest.json

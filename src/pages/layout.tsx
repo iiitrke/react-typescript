@@ -8,6 +8,7 @@ import { store } from "../state";
 const AppRootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <Provider store={store}>
+      Hello Owld
       <AppBarFC />
       {children}
     </Provider>
