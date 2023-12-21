@@ -11,18 +11,12 @@ export default function Page() {
 const navigation = useRouter();
 
     return (
-<<<<<<< HEAD
-
-        <>fdsfsdf</>
- 
-=======
 <RootLayout>
      <BannerFC />
      <IntroFC />
 
      <LoginFormCL />
-</  RootLayout> 
->>>>>>> 5f988e57903be787bca27559f2e79fbf6830842a
+</  RootLayout>  
     )
   }
 
