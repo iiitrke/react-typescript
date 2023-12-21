@@ -15,3 +15,12 @@ model TestModel {
   id Int        @id
   name String
 }
+
+model User {
+ email String  @unique
+ id    Int     @id
+ name  String?
+ 
+
+ @@map("users")
+}
