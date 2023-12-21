@@ -1,6 +1,6 @@
 import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
 import ReactMarkdown from "react-markdown";
-import { useUserActions } from "../../hooks/useUserActions";
+import { useUserActions } from "../../lib/hooks/useUserActions";
 import { useIntroAction } from "../../state/hooks/useIntroAction";
 import { useTypedSeletor } from "../../state/hooks/useTypedSelector";
 import { IntroModel } from "../../state/models/Intro-type";

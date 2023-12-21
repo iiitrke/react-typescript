@@ -1,33 +1,35 @@
 import { createContext } from "vm";
-import { useAxiosFetch } from "../hooks/useAxiosFetch";
+import { useAxiosFetch } from "../lib/hooks/useAxiosFetch";
 import { useEffect, useState } from "react";
 
-const DataContext  =createContext({});
+const DataContext = createContext({});
 
-export const DataProvider = ({children}:any)=>{
+export const DataProvider = ({ children }: any) => {
+  const [posts, setPosts] = useState<any[]>([]);
+  const [search, setSearch] = useState("");
+  const [searchResults, setSearchResults] = useState<any[]>([]);
 
-    const [posts, setPosts] = useState<any[]>([])
-    const [search, setSearch] = useState('');
-    const [searchResults, setSearchResults] = useState<any[]>([]);
+  const { data, fetchError, isLoading } = useAxiosFetch(
+    "http://localhost:3500/posts"
+  );
 
-    const { data, fetchError, isLoading } = useAxiosFetch('http://localhost:3500/posts');
+  useEffect(() => {
+    setPosts(data);
+  }, [data]);
 
-    useEffect(() => {
-        setPosts(data);
-    }, [data]);
+  useEffect(() => {
+    const filteredResults = posts.filter(
+      (post) =>
+        post.body.toLowerCase().includes(search.toLowerCase()) ||
+        post.title.toLowerCase().includes(search.toLowerCase())
+    );
 
-    useEffect(() => {
-        const filteredResults = posts.filter((post) =>
-            ((post.body).toLowerCase()).includes(search.toLowerCase())
-            || ((post.title).toLowerCase()).includes(search.toLowerCase()));
-
-        setSearchResults(filteredResults.reverse());
-    }, [posts, search])
-return(
-    <DataContext.Provider value ={{posts, setPosts, search, setSearch}}>
-        {children}
+    setSearchResults(filteredResults.reverse());
+  }, [posts, search]);
+  return (
+    <DataContext.Provider value={{ posts, setPosts, search, setSearch }}>
+      {children}
     </DataContext.Provider>
-)
-
-}
- export default DataContext
+  );
+};
+export default DataContext;
