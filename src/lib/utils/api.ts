@@ -10,14 +10,14 @@ const instance = axios.create({
   },
 });
 
-export const fetcher = (url: string) => {
+export const fetcher = (url: string): any => {
   return instance.get(url).then((res) => {
     if (!res.data) {
       throw Error(res.data.message);
     }
-
     return res.data;
   });
+  return { isLoading: false, data: [], error: null };
 };
 
 export default instance;
