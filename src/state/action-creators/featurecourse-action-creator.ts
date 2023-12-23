@@ -1,9 +1,6 @@
 import axios from "axios";
 import { Dispatch } from "redux";
-import {
-  API_FEATURED_COURSES,
-  API_INTRO,
-} from "./../../constants/URLConstants";
+import { API_FEATURED_COURSES, API_INTRO } from "../../constants/URLConstants";
 import { FeaturedCoursesActionType } from "../action-types/featured-course-types";
 
 import { FeaturedCourseAction } from "../actions/featured-courses-action";

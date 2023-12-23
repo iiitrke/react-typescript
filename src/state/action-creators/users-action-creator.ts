@@ -1,6 +1,6 @@
 import axios from "axios";
 import { ActionType } from "../action-types/user-actions-types";
-import { API_USERS } from "./../../constants/URLConstants";
+import { API_USERS } from "../../constants/URLConstants";
 import { Dispatch } from "redux";
 import { Action } from "../actions/user-actions";
 export const searchRepositories = () => {

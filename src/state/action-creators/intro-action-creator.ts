@@ -1,7 +1,7 @@
 import { Dispatch } from "redux";
 import { IntroAction } from "../actions/IntroAction";
 import { IntroActionType } from "../action-types/intro-action-types";
-import { API_INTRO } from "./../../constants/URLConstants";
+import { API_INTRO } from "../../constants/URLConstants";
 import axios from "axios";
 
 export const introRepository = () => {

@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next/types";
-import { introData } from "../../../../data/introData";
+import { introData } from "../../../../src/data/introData";
 
 import { NextRequest, NextResponse } from "next/server";
 
