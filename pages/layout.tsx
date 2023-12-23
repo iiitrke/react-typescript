@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import Navbar from "../components/navbar/Navbar";
 import { AppBarFC } from "../components/navbar/AppBarFC";
 import { FooterAsFC } from "../components/Footer";

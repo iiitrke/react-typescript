@@ -1,8 +1,9 @@
 import { useRouter } from "next/router";
 import AppRootLayout from "./layout";
-import { BannerFC } from "../src/components/banner/BannerFC";
+import { BannerFC } from "../components/banner/BannerFC";
 import { IntroFC } from "../components/intro/IntroFC";
-import { LoginFormCL, LoginFormFC } from "../components/login/LoginFormCL";
+import { LoginFormCL } from "../components/login/LoginFormCL";
+import * as React from "react";
 export default function Page() {
   const navigation = useRouter();
   return (
@@ -10,7 +11,7 @@ export default function Page() {
       <BannerFC />
       <IntroFC />
 
-      <LoginFormCL />
+      {/* <LoginFormCL /> */}
     </AppRootLayout>
   );
 }
