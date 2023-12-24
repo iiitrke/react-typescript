@@ -43,3 +43,7 @@ yarn-error.log*
 .next/cache/webpack/server-development/8.pack.gz
 .next/cache/webpack/server-development/index.pack.gz
 .next/cache/webpack/server-development/index.pack.gz.old
+.next/cache/webpack/client-development/index.pack.gz
+.next/cache/webpack/client-development/index.pack.gz.old
+.next/cache/webpack/server-development/index.pack.gz
+.next/cache/webpack/server-development/index.pack.gz.old
