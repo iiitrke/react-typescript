@@ -13,11 +13,7 @@ export async function GET(request: NextRequest) {
     // .then((result) => result);
   });
   const resolvedPromises = await Promise.all(datas);
-  console.log("DATA STORED1");
-  console.log(resolvedPromises);
 
-  //   const deleteIntros = prisma.intro.deleteMany();
-  //   await prisma.$transaction([deleteIntros]);
   return NextResponse.json(
     { count: "Deleted", data: resolvedPromises },
     { status: 200 }
