@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next/types";
-import { featuredcourseData } from "../data/featuredCoursesData";
+import { featuredcourseData } from "../src/data/featuredCoursesData"; //   src/data/featuredCoursesData";
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const { method } = req;
   switch (method) {
