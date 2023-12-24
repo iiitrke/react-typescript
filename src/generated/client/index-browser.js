@@ -162,6 +162,13 @@ exports.Prisma.IntroScalarFieldEnum = {
   desc: 'desc'
 };
 
+exports.Prisma.FeaturedCourseScalarFieldEnum = {
+  id: 'id',
+  image: 'image',
+  link: 'link',
+  desc: 'desc'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -184,7 +191,8 @@ exports.Prisma.ModelName = {
   Session: 'Session',
   User: 'User',
   VerificationRequest: 'VerificationRequest',
-  Intro: 'Intro'
+  Intro: 'Intro',
+  FeaturedCourse: 'FeaturedCourse'
 };
 
 /**

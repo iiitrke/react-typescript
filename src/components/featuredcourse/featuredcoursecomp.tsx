@@ -24,11 +24,12 @@ const FeaturCouComp: React.FC = () => {
     featuredcoursesCre();
   }, []);
 
+  data.map((d) => console.log(d));
   return (
     <>
-      {/* {loading && <p> Loading</p>}
+      {loading && <p> Loading</p>}
       {error && <p> Error</p>}
-      <h2> Featured Courses</h2> */}
+
       <Box
         sx={{
           bgcolor: "background.paper",

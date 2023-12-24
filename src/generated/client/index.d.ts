@@ -43,6 +43,11 @@ export type VerificationRequest = $Result.DefaultSelection<Prisma.$VerificationR
  * 
  */
 export type Intro = $Result.DefaultSelection<Prisma.$IntroPayload>
+/**
+ * Model FeaturedCourse
+ * 
+ */
+export type FeaturedCourse = $Result.DefaultSelection<Prisma.$FeaturedCoursePayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -225,6 +230,16 @@ export class PrismaClient<
     * ```
     */
   get intro(): Prisma.IntroDelegate<ExtArgs>;
+
+  /**
+   * `prisma.featuredCourse`: Exposes CRUD operations for the **FeaturedCourse** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more FeaturedCourses
+    * const featuredCourses = await prisma.featuredCourse.findMany()
+    * ```
+    */
+  get featuredCourse(): Prisma.FeaturedCourseDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -700,7 +715,8 @@ export namespace Prisma {
     Session: 'Session',
     User: 'User',
     VerificationRequest: 'VerificationRequest',
-    Intro: 'Intro'
+    Intro: 'Intro',
+    FeaturedCourse: 'FeaturedCourse'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -717,7 +733,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'testModel' | 'account' | 'session' | 'user' | 'verificationRequest' | 'intro'
+      modelProps: 'testModel' | 'account' | 'session' | 'user' | 'verificationRequest' | 'intro' | 'featuredCourse'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -1114,6 +1130,72 @@ export namespace Prisma {
           count: {
             args: Prisma.IntroCountArgs<ExtArgs>,
             result: $Utils.Optional<IntroCountAggregateOutputType> | number
+          }
+        }
+      }
+      FeaturedCourse: {
+        payload: Prisma.$FeaturedCoursePayload<ExtArgs>
+        fields: Prisma.FeaturedCourseFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.FeaturedCourseFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FeaturedCoursePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.FeaturedCourseFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FeaturedCoursePayload>
+          }
+          findFirst: {
+            args: Prisma.FeaturedCourseFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FeaturedCoursePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.FeaturedCourseFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FeaturedCoursePayload>
+          }
+          findMany: {
+            args: Prisma.FeaturedCourseFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FeaturedCoursePayload>[]
+          }
+          create: {
+            args: Prisma.FeaturedCourseCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FeaturedCoursePayload>
+          }
+          createMany: {
+            args: Prisma.FeaturedCourseCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.FeaturedCourseDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FeaturedCoursePayload>
+          }
+          update: {
+            args: Prisma.FeaturedCourseUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FeaturedCoursePayload>
+          }
+          deleteMany: {
+            args: Prisma.FeaturedCourseDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.FeaturedCourseUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.FeaturedCourseUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$FeaturedCoursePayload>
+          }
+          aggregate: {
+            args: Prisma.FeaturedCourseAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateFeaturedCourse>
+          }
+          groupBy: {
+            args: Prisma.FeaturedCourseGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<FeaturedCourseGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.FeaturedCourseCountArgs<ExtArgs>,
+            result: $Utils.Optional<FeaturedCourseCountAggregateOutputType> | number
           }
         }
       }
@@ -6776,6 +6858,899 @@ export namespace Prisma {
 
 
   /**
+   * Model FeaturedCourse
+   */
+
+  export type AggregateFeaturedCourse = {
+    _count: FeaturedCourseCountAggregateOutputType | null
+    _avg: FeaturedCourseAvgAggregateOutputType | null
+    _sum: FeaturedCourseSumAggregateOutputType | null
+    _min: FeaturedCourseMinAggregateOutputType | null
+    _max: FeaturedCourseMaxAggregateOutputType | null
+  }
+
+  export type FeaturedCourseAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type FeaturedCourseSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type FeaturedCourseMinAggregateOutputType = {
+    id: number | null
+    image: string | null
+    link: string | null
+    desc: string | null
+  }
+
+  export type FeaturedCourseMaxAggregateOutputType = {
+    id: number | null
+    image: string | null
+    link: string | null
+    desc: string | null
+  }
+
+  export type FeaturedCourseCountAggregateOutputType = {
+    id: number
+    image: number
+    link: number
+    desc: number
+    _all: number
+  }
+
+
+  export type FeaturedCourseAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type FeaturedCourseSumAggregateInputType = {
+    id?: true
+  }
+
+  export type FeaturedCourseMinAggregateInputType = {
+    id?: true
+    image?: true
+    link?: true
+    desc?: true
+  }
+
+  export type FeaturedCourseMaxAggregateInputType = {
+    id?: true
+    image?: true
+    link?: true
+    desc?: true
+  }
+
+  export type FeaturedCourseCountAggregateInputType = {
+    id?: true
+    image?: true
+    link?: true
+    desc?: true
+    _all?: true
+  }
+
+  export type FeaturedCourseAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which FeaturedCourse to aggregate.
+     */
+    where?: FeaturedCourseWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FeaturedCourses to fetch.
+     */
+    orderBy?: FeaturedCourseOrderByWithRelationInput | FeaturedCourseOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: FeaturedCourseWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FeaturedCourses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FeaturedCourses.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned FeaturedCourses
+    **/
+    _count?: true | FeaturedCourseCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: FeaturedCourseAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: FeaturedCourseSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: FeaturedCourseMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: FeaturedCourseMaxAggregateInputType
+  }
+
+  export type GetFeaturedCourseAggregateType<T extends FeaturedCourseAggregateArgs> = {
+        [P in keyof T & keyof AggregateFeaturedCourse]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateFeaturedCourse[P]>
+      : GetScalarType<T[P], AggregateFeaturedCourse[P]>
+  }
+
+
+
+
+  export type FeaturedCourseGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FeaturedCourseWhereInput
+    orderBy?: FeaturedCourseOrderByWithAggregationInput | FeaturedCourseOrderByWithAggregationInput[]
+    by: FeaturedCourseScalarFieldEnum[] | FeaturedCourseScalarFieldEnum
+    having?: FeaturedCourseScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: FeaturedCourseCountAggregateInputType | true
+    _avg?: FeaturedCourseAvgAggregateInputType
+    _sum?: FeaturedCourseSumAggregateInputType
+    _min?: FeaturedCourseMinAggregateInputType
+    _max?: FeaturedCourseMaxAggregateInputType
+  }
+
+  export type FeaturedCourseGroupByOutputType = {
+    id: number
+    image: string
+    link: string
+    desc: string
+    _count: FeaturedCourseCountAggregateOutputType | null
+    _avg: FeaturedCourseAvgAggregateOutputType | null
+    _sum: FeaturedCourseSumAggregateOutputType | null
+    _min: FeaturedCourseMinAggregateOutputType | null
+    _max: FeaturedCourseMaxAggregateOutputType | null
+  }
+
+  type GetFeaturedCourseGroupByPayload<T extends FeaturedCourseGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<FeaturedCourseGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof FeaturedCourseGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], FeaturedCourseGroupByOutputType[P]>
+            : GetScalarType<T[P], FeaturedCourseGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type FeaturedCourseSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    image?: boolean
+    link?: boolean
+    desc?: boolean
+  }, ExtArgs["result"]["featuredCourse"]>
+
+  export type FeaturedCourseSelectScalar = {
+    id?: boolean
+    image?: boolean
+    link?: boolean
+    desc?: boolean
+  }
+
+
+  export type $FeaturedCoursePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "FeaturedCourse"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      image: string
+      link: string
+      desc: string
+    }, ExtArgs["result"]["featuredCourse"]>
+    composites: {}
+  }
+
+
+  type FeaturedCourseGetPayload<S extends boolean | null | undefined | FeaturedCourseDefaultArgs> = $Result.GetResult<Prisma.$FeaturedCoursePayload, S>
+
+  type FeaturedCourseCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<FeaturedCourseFindManyArgs, 'select' | 'include' | 'distinct' > & {
+      select?: FeaturedCourseCountAggregateInputType | true
+    }
+
+  export interface FeaturedCourseDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['FeaturedCourse'], meta: { name: 'FeaturedCourse' } }
+    /**
+     * Find zero or one FeaturedCourse that matches the filter.
+     * @param {FeaturedCourseFindUniqueArgs} args - Arguments to find a FeaturedCourse
+     * @example
+     * // Get one FeaturedCourse
+     * const featuredCourse = await prisma.featuredCourse.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends FeaturedCourseFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, FeaturedCourseFindUniqueArgs<ExtArgs>>
+    ): Prisma__FeaturedCourseClient<$Result.GetResult<Prisma.$FeaturedCoursePayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one FeaturedCourse that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {FeaturedCourseFindUniqueOrThrowArgs} args - Arguments to find a FeaturedCourse
+     * @example
+     * // Get one FeaturedCourse
+     * const featuredCourse = await prisma.featuredCourse.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends FeaturedCourseFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, FeaturedCourseFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__FeaturedCourseClient<$Result.GetResult<Prisma.$FeaturedCoursePayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first FeaturedCourse that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FeaturedCourseFindFirstArgs} args - Arguments to find a FeaturedCourse
+     * @example
+     * // Get one FeaturedCourse
+     * const featuredCourse = await prisma.featuredCourse.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends FeaturedCourseFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, FeaturedCourseFindFirstArgs<ExtArgs>>
+    ): Prisma__FeaturedCourseClient<$Result.GetResult<Prisma.$FeaturedCoursePayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first FeaturedCourse that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FeaturedCourseFindFirstOrThrowArgs} args - Arguments to find a FeaturedCourse
+     * @example
+     * // Get one FeaturedCourse
+     * const featuredCourse = await prisma.featuredCourse.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends FeaturedCourseFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, FeaturedCourseFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__FeaturedCourseClient<$Result.GetResult<Prisma.$FeaturedCoursePayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more FeaturedCourses that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FeaturedCourseFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all FeaturedCourses
+     * const featuredCourses = await prisma.featuredCourse.findMany()
+     * 
+     * // Get first 10 FeaturedCourses
+     * const featuredCourses = await prisma.featuredCourse.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const featuredCourseWithIdOnly = await prisma.featuredCourse.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends FeaturedCourseFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, FeaturedCourseFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FeaturedCoursePayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a FeaturedCourse.
+     * @param {FeaturedCourseCreateArgs} args - Arguments to create a FeaturedCourse.
+     * @example
+     * // Create one FeaturedCourse
+     * const FeaturedCourse = await prisma.featuredCourse.create({
+     *   data: {
+     *     // ... data to create a FeaturedCourse
+     *   }
+     * })
+     * 
+    **/
+    create<T extends FeaturedCourseCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, FeaturedCourseCreateArgs<ExtArgs>>
+    ): Prisma__FeaturedCourseClient<$Result.GetResult<Prisma.$FeaturedCoursePayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many FeaturedCourses.
+     *     @param {FeaturedCourseCreateManyArgs} args - Arguments to create many FeaturedCourses.
+     *     @example
+     *     // Create many FeaturedCourses
+     *     const featuredCourse = await prisma.featuredCourse.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends FeaturedCourseCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, FeaturedCourseCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a FeaturedCourse.
+     * @param {FeaturedCourseDeleteArgs} args - Arguments to delete one FeaturedCourse.
+     * @example
+     * // Delete one FeaturedCourse
+     * const FeaturedCourse = await prisma.featuredCourse.delete({
+     *   where: {
+     *     // ... filter to delete one FeaturedCourse
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends FeaturedCourseDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, FeaturedCourseDeleteArgs<ExtArgs>>
+    ): Prisma__FeaturedCourseClient<$Result.GetResult<Prisma.$FeaturedCoursePayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one FeaturedCourse.
+     * @param {FeaturedCourseUpdateArgs} args - Arguments to update one FeaturedCourse.
+     * @example
+     * // Update one FeaturedCourse
+     * const featuredCourse = await prisma.featuredCourse.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends FeaturedCourseUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, FeaturedCourseUpdateArgs<ExtArgs>>
+    ): Prisma__FeaturedCourseClient<$Result.GetResult<Prisma.$FeaturedCoursePayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more FeaturedCourses.
+     * @param {FeaturedCourseDeleteManyArgs} args - Arguments to filter FeaturedCourses to delete.
+     * @example
+     * // Delete a few FeaturedCourses
+     * const { count } = await prisma.featuredCourse.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends FeaturedCourseDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, FeaturedCourseDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more FeaturedCourses.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FeaturedCourseUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many FeaturedCourses
+     * const featuredCourse = await prisma.featuredCourse.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends FeaturedCourseUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, FeaturedCourseUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one FeaturedCourse.
+     * @param {FeaturedCourseUpsertArgs} args - Arguments to update or create a FeaturedCourse.
+     * @example
+     * // Update or create a FeaturedCourse
+     * const featuredCourse = await prisma.featuredCourse.upsert({
+     *   create: {
+     *     // ... data to create a FeaturedCourse
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the FeaturedCourse we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends FeaturedCourseUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, FeaturedCourseUpsertArgs<ExtArgs>>
+    ): Prisma__FeaturedCourseClient<$Result.GetResult<Prisma.$FeaturedCoursePayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of FeaturedCourses.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FeaturedCourseCountArgs} args - Arguments to filter FeaturedCourses to count.
+     * @example
+     * // Count the number of FeaturedCourses
+     * const count = await prisma.featuredCourse.count({
+     *   where: {
+     *     // ... the filter for the FeaturedCourses we want to count
+     *   }
+     * })
+    **/
+    count<T extends FeaturedCourseCountArgs>(
+      args?: Subset<T, FeaturedCourseCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], FeaturedCourseCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a FeaturedCourse.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FeaturedCourseAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends FeaturedCourseAggregateArgs>(args: Subset<T, FeaturedCourseAggregateArgs>): Prisma.PrismaPromise<GetFeaturedCourseAggregateType<T>>
+
+    /**
+     * Group by FeaturedCourse.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FeaturedCourseGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends FeaturedCourseGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: FeaturedCourseGroupByArgs['orderBy'] }
+        : { orderBy?: FeaturedCourseGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, FeaturedCourseGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFeaturedCourseGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the FeaturedCourse model
+   */
+  readonly fields: FeaturedCourseFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for FeaturedCourse.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__FeaturedCourseClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the FeaturedCourse model
+   */ 
+  interface FeaturedCourseFieldRefs {
+    readonly id: FieldRef<"FeaturedCourse", 'Int'>
+    readonly image: FieldRef<"FeaturedCourse", 'String'>
+    readonly link: FieldRef<"FeaturedCourse", 'String'>
+    readonly desc: FieldRef<"FeaturedCourse", 'String'>
+  }
+    
+
+  // Custom InputTypes
+
+  /**
+   * FeaturedCourse findUnique
+   */
+  export type FeaturedCourseFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FeaturedCourse
+     */
+    select?: FeaturedCourseSelect<ExtArgs> | null
+    /**
+     * Filter, which FeaturedCourse to fetch.
+     */
+    where: FeaturedCourseWhereUniqueInput
+  }
+
+
+  /**
+   * FeaturedCourse findUniqueOrThrow
+   */
+  export type FeaturedCourseFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FeaturedCourse
+     */
+    select?: FeaturedCourseSelect<ExtArgs> | null
+    /**
+     * Filter, which FeaturedCourse to fetch.
+     */
+    where: FeaturedCourseWhereUniqueInput
+  }
+
+
+  /**
+   * FeaturedCourse findFirst
+   */
+  export type FeaturedCourseFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FeaturedCourse
+     */
+    select?: FeaturedCourseSelect<ExtArgs> | null
+    /**
+     * Filter, which FeaturedCourse to fetch.
+     */
+    where?: FeaturedCourseWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FeaturedCourses to fetch.
+     */
+    orderBy?: FeaturedCourseOrderByWithRelationInput | FeaturedCourseOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for FeaturedCourses.
+     */
+    cursor?: FeaturedCourseWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FeaturedCourses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FeaturedCourses.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of FeaturedCourses.
+     */
+    distinct?: FeaturedCourseScalarFieldEnum | FeaturedCourseScalarFieldEnum[]
+  }
+
+
+  /**
+   * FeaturedCourse findFirstOrThrow
+   */
+  export type FeaturedCourseFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FeaturedCourse
+     */
+    select?: FeaturedCourseSelect<ExtArgs> | null
+    /**
+     * Filter, which FeaturedCourse to fetch.
+     */
+    where?: FeaturedCourseWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FeaturedCourses to fetch.
+     */
+    orderBy?: FeaturedCourseOrderByWithRelationInput | FeaturedCourseOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for FeaturedCourses.
+     */
+    cursor?: FeaturedCourseWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FeaturedCourses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FeaturedCourses.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of FeaturedCourses.
+     */
+    distinct?: FeaturedCourseScalarFieldEnum | FeaturedCourseScalarFieldEnum[]
+  }
+
+
+  /**
+   * FeaturedCourse findMany
+   */
+  export type FeaturedCourseFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FeaturedCourse
+     */
+    select?: FeaturedCourseSelect<ExtArgs> | null
+    /**
+     * Filter, which FeaturedCourses to fetch.
+     */
+    where?: FeaturedCourseWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FeaturedCourses to fetch.
+     */
+    orderBy?: FeaturedCourseOrderByWithRelationInput | FeaturedCourseOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing FeaturedCourses.
+     */
+    cursor?: FeaturedCourseWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FeaturedCourses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FeaturedCourses.
+     */
+    skip?: number
+    distinct?: FeaturedCourseScalarFieldEnum | FeaturedCourseScalarFieldEnum[]
+  }
+
+
+  /**
+   * FeaturedCourse create
+   */
+  export type FeaturedCourseCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FeaturedCourse
+     */
+    select?: FeaturedCourseSelect<ExtArgs> | null
+    /**
+     * The data needed to create a FeaturedCourse.
+     */
+    data: XOR<FeaturedCourseCreateInput, FeaturedCourseUncheckedCreateInput>
+  }
+
+
+  /**
+   * FeaturedCourse createMany
+   */
+  export type FeaturedCourseCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many FeaturedCourses.
+     */
+    data: FeaturedCourseCreateManyInput | FeaturedCourseCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * FeaturedCourse update
+   */
+  export type FeaturedCourseUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FeaturedCourse
+     */
+    select?: FeaturedCourseSelect<ExtArgs> | null
+    /**
+     * The data needed to update a FeaturedCourse.
+     */
+    data: XOR<FeaturedCourseUpdateInput, FeaturedCourseUncheckedUpdateInput>
+    /**
+     * Choose, which FeaturedCourse to update.
+     */
+    where: FeaturedCourseWhereUniqueInput
+  }
+
+
+  /**
+   * FeaturedCourse updateMany
+   */
+  export type FeaturedCourseUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update FeaturedCourses.
+     */
+    data: XOR<FeaturedCourseUpdateManyMutationInput, FeaturedCourseUncheckedUpdateManyInput>
+    /**
+     * Filter which FeaturedCourses to update
+     */
+    where?: FeaturedCourseWhereInput
+  }
+
+
+  /**
+   * FeaturedCourse upsert
+   */
+  export type FeaturedCourseUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FeaturedCourse
+     */
+    select?: FeaturedCourseSelect<ExtArgs> | null
+    /**
+     * The filter to search for the FeaturedCourse to update in case it exists.
+     */
+    where: FeaturedCourseWhereUniqueInput
+    /**
+     * In case the FeaturedCourse found by the `where` argument doesn't exist, create a new FeaturedCourse with this data.
+     */
+    create: XOR<FeaturedCourseCreateInput, FeaturedCourseUncheckedCreateInput>
+    /**
+     * In case the FeaturedCourse was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<FeaturedCourseUpdateInput, FeaturedCourseUncheckedUpdateInput>
+  }
+
+
+  /**
+   * FeaturedCourse delete
+   */
+  export type FeaturedCourseDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FeaturedCourse
+     */
+    select?: FeaturedCourseSelect<ExtArgs> | null
+    /**
+     * Filter which FeaturedCourse to delete.
+     */
+    where: FeaturedCourseWhereUniqueInput
+  }
+
+
+  /**
+   * FeaturedCourse deleteMany
+   */
+  export type FeaturedCourseDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which FeaturedCourses to delete
+     */
+    where?: FeaturedCourseWhereInput
+  }
+
+
+  /**
+   * FeaturedCourse without action
+   */
+  export type FeaturedCourseDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FeaturedCourse
+     */
+    select?: FeaturedCourseSelect<ExtArgs> | null
+  }
+
+
+
+  /**
    * Enums
    */
 
@@ -6860,6 +7835,16 @@ export namespace Prisma {
   };
 
   export type IntroScalarFieldEnum = (typeof IntroScalarFieldEnum)[keyof typeof IntroScalarFieldEnum]
+
+
+  export const FeaturedCourseScalarFieldEnum: {
+    id: 'id',
+    image: 'image',
+    link: 'link',
+    desc: 'desc'
+  };
+
+  export type FeaturedCourseScalarFieldEnum = (typeof FeaturedCourseScalarFieldEnum)[keyof typeof FeaturedCourseScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -7309,6 +8294,55 @@ export namespace Prisma {
     desc?: StringWithAggregatesFilter<"Intro"> | string
   }
 
+  export type FeaturedCourseWhereInput = {
+    AND?: FeaturedCourseWhereInput | FeaturedCourseWhereInput[]
+    OR?: FeaturedCourseWhereInput[]
+    NOT?: FeaturedCourseWhereInput | FeaturedCourseWhereInput[]
+    id?: IntFilter<"FeaturedCourse"> | number
+    image?: StringFilter<"FeaturedCourse"> | string
+    link?: StringFilter<"FeaturedCourse"> | string
+    desc?: StringFilter<"FeaturedCourse"> | string
+  }
+
+  export type FeaturedCourseOrderByWithRelationInput = {
+    id?: SortOrder
+    image?: SortOrder
+    link?: SortOrder
+    desc?: SortOrder
+  }
+
+  export type FeaturedCourseWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: FeaturedCourseWhereInput | FeaturedCourseWhereInput[]
+    OR?: FeaturedCourseWhereInput[]
+    NOT?: FeaturedCourseWhereInput | FeaturedCourseWhereInput[]
+    image?: StringFilter<"FeaturedCourse"> | string
+    link?: StringFilter<"FeaturedCourse"> | string
+    desc?: StringFilter<"FeaturedCourse"> | string
+  }, "id">
+
+  export type FeaturedCourseOrderByWithAggregationInput = {
+    id?: SortOrder
+    image?: SortOrder
+    link?: SortOrder
+    desc?: SortOrder
+    _count?: FeaturedCourseCountOrderByAggregateInput
+    _avg?: FeaturedCourseAvgOrderByAggregateInput
+    _max?: FeaturedCourseMaxOrderByAggregateInput
+    _min?: FeaturedCourseMinOrderByAggregateInput
+    _sum?: FeaturedCourseSumOrderByAggregateInput
+  }
+
+  export type FeaturedCourseScalarWhereWithAggregatesInput = {
+    AND?: FeaturedCourseScalarWhereWithAggregatesInput | FeaturedCourseScalarWhereWithAggregatesInput[]
+    OR?: FeaturedCourseScalarWhereWithAggregatesInput[]
+    NOT?: FeaturedCourseScalarWhereWithAggregatesInput | FeaturedCourseScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"FeaturedCourse"> | number
+    image?: StringWithAggregatesFilter<"FeaturedCourse"> | string
+    link?: StringWithAggregatesFilter<"FeaturedCourse"> | string
+    desc?: StringWithAggregatesFilter<"FeaturedCourse"> | string
+  }
+
   export type TestModelCreateInput = {
     id: number
     name: string
@@ -7679,6 +8713,52 @@ export namespace Prisma {
     desc?: StringFieldUpdateOperationsInput | string
   }
 
+  export type FeaturedCourseCreateInput = {
+    image: string
+    link: string
+    desc: string
+  }
+
+  export type FeaturedCourseUncheckedCreateInput = {
+    id?: number
+    image: string
+    link: string
+    desc: string
+  }
+
+  export type FeaturedCourseUpdateInput = {
+    image?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type FeaturedCourseUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    image?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type FeaturedCourseCreateManyInput = {
+    id?: number
+    image: string
+    link: string
+    desc: string
+  }
+
+  export type FeaturedCourseUpdateManyMutationInput = {
+    image?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type FeaturedCourseUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    image?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -8044,6 +9124,35 @@ export namespace Prisma {
     id?: SortOrder
   }
 
+  export type FeaturedCourseCountOrderByAggregateInput = {
+    id?: SortOrder
+    image?: SortOrder
+    link?: SortOrder
+    desc?: SortOrder
+  }
+
+  export type FeaturedCourseAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type FeaturedCourseMaxOrderByAggregateInput = {
+    id?: SortOrder
+    image?: SortOrder
+    link?: SortOrder
+    desc?: SortOrder
+  }
+
+  export type FeaturedCourseMinOrderByAggregateInput = {
+    id?: SortOrder
+    image?: SortOrder
+    link?: SortOrder
+    desc?: SortOrder
+  }
+
+  export type FeaturedCourseSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -8258,6 +9367,10 @@ export namespace Prisma {
      * @deprecated Use IntroDefaultArgs instead
      */
     export type IntroArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = IntroDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use FeaturedCourseDefaultArgs instead
+     */
+    export type FeaturedCourseArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = FeaturedCourseDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany

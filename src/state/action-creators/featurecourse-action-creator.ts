@@ -10,6 +10,8 @@ export const featuredcoursesCre = () => {
     dispatch({ type: FeaturedCoursesActionType.FEATUREDCOURSE_FETCH_REPO });
     try {
       const { data } = await axios.get(API_FEATURED_COURSES);
+      console.log("DATA RECEIVED FROM AXIOS");
+      console.log(data);
 
       dispatch({
         type: FeaturedCoursesActionType.FEATUREDCOURSE_FETCH_REPO_SUCCESS,

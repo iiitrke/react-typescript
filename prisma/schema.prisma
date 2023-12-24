@@ -87,3 +87,12 @@ model Intro {
 
   @@map(name: "intro")
 }
+
+model FeaturedCourse {
+  id         Int      @default(autoincrement()) @id
+  image String
+  link String
+  desc      String   
+
+  @@map(name: "featuredcourse")
+}
