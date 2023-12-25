@@ -24,7 +24,6 @@ const FeaturCouComp: React.FC = () => {
     featuredcoursesCre();
   }, []);
 
-  data.map((d) => console.log(d));
   return (
     <>
       {loading && <p> Loading</p>}
@@ -50,7 +49,7 @@ const FeaturCouComp: React.FC = () => {
             justifyContent="space-between"
           >
             {data.map((item: FeaturedCourseModel, index) => (
-              <Grid item xs={12} sm={6} md={3}>
+              <Grid key={index} item xs={12} sm={6} md={3}>
                 <Card key={index}>
                   <CardMedia component="img" image={item.image} />
                   <CardContent>

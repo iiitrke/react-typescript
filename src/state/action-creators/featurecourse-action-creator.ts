@@ -4,14 +4,13 @@ import { API_FEATURED_COURSES, API_INTRO } from "../../constants/URLConstants";
 import { FeaturedCoursesActionType } from "../action-types/featured-course-types";
 
 import { FeaturedCourseAction } from "../actions/featured-courses-action";
+import useSWR from "swr";
 
 export const featuredcoursesCre = () => {
   return async (dispatch: Dispatch<FeaturedCourseAction>) => {
     dispatch({ type: FeaturedCoursesActionType.FEATUREDCOURSE_FETCH_REPO });
     try {
       const { data } = await axios.get(API_FEATURED_COURSES);
-      console.log("DATA RECEIVED FROM AXIOS");
-      console.log(data);
 
       dispatch({
         type: FeaturedCoursesActionType.FEATUREDCOURSE_FETCH_REPO_SUCCESS,
