@@ -1,6 +1,5 @@
 import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
 import ReactMarkdown from "react-markdown";
-import { useUserActions } from "../../lib/hooks/useUserActions";
 import { useIntroAction } from "../../state/hooks/useIntroAction";
 import { useTypedSeletor } from "../../state/hooks/useTypedSelector";
 import { IntroModel } from "../../state/models/Intro-type";
@@ -8,7 +7,6 @@ import "./Intro.css";
 import { useFeaturedCourseAction } from "../../state/hooks/useFeaturedCourseAction";
 import { useEffect } from "react";
 const IntroComp = () => {
-  const { searchRepositories } = useUserActions();
   const { introRepository } = useIntroAction();
 
   const { loading, error, cached, data } = useTypedSeletor(
