@@ -3,6 +3,5 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/authui/login": "pages/authui/login.js",
-  "/": "pages/index.js",
-  "/authui/register": "pages/authui/register.js"
+  "/": "pages/index.js"
 }

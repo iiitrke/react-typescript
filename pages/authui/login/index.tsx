@@ -1,13 +1,37 @@
 "use client";
 import { Button, Grid, TextField } from "@mui/material";
-import React, { useEffect } from "react";
+import React, { startTransition, useEffect, useReducer } from "react";
 import { useState } from "react";
 
 import { Input, InputLabel } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
+import { error } from "console";
+import { Field, ErrorMessage, useFormik } from "formik";
 
-import { User } from "@prisma/client";
+const initialValues = {
+  email: "",
+  password: "",
+};
+
+const validater = (values: any) => {
+  const errors: any = {};
+
+  if (!values.email) {
+    errors.email = "Required";
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    errors.email = "Invalid email address";
+  }
+
+  if (!values.password) {
+    errors.password = "Required";
+  } else if (values.password.length > 20) {
+    errors.password = "Must be 20 characters or less";
+  }
+
+  return errors;
+};
+
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
@@ -17,45 +41,13 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function Page() {
-  const [errors, setErrors] = useState<any>({});
-  const [isFormValid, setIsFormValid] = useState(false);
-  const [email, setEmail] = useState<string>();
-  const [password, setPassword] = useState<string>();
-
-  useEffect(() => {
-    validateForm();
-  }, [email, password]);
-
-  const validateForm = () => {
-    let errors = {};
-    console.log("Validate Called");
-
-    if (!email) {
-      errors["email"] = "Email is required.";
-    } else if (!/\S+@\S+\.\S+/.test(email)) {
-      errors["email"] = "Email is invalid.";
-    }
-
-    if (!password) {
-      errors["password"] = "Password is required.";
-    } else if (password.length < 6) {
-      errors["password"] = "Password must be at least 6 characters.";
-    }
-
-    setErrors(errors);
-    setIsFormValid(Object.keys(errors).length === 0);
-  };
-
-  const submitForm = (e) => {
-    e.preventDefault();
-
-    if (isFormValid) {
-      console.log("Form submitted successfully!");
-    } else {
-      console.log("Form has errors. Please correct them.");
-    }
-    // console.log("Auth state is ", authState);
-  };
+  const formik = useFormik({
+    initialValues: { email: "", password: "" },
+    validate: validater,
+    onSubmit: (values) => {
+      alert(JSON.stringify(values));
+    },
+  });
 
   return (
     <Grid container spacing={2}>
@@ -63,6 +55,7 @@ export default function Page() {
               <Item>xs=8</Item>
             </Grid> */}
       <p> Login</p>
+
       <Grid item xs={12} sm={12} md={12}>
         <form>
           <TextField
@@ -71,10 +64,12 @@ export default function Page() {
             variant="outlined"
             fullWidth
             margin="normal"
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.email}
           />
 
-          {errors.email && <p> {`${errors.email}`}</p>}
+          {formik.errors.email ? <div>{formik.errors.email}</div> : null}
 
           <TextField
             name="password"
@@ -83,16 +78,13 @@ export default function Page() {
             fullWidth
             type="password"
             margin="normal"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.password}
           />
-          {errors.password && <p> {`${errors.password}`}</p>}
+          {formik.errors.password ? <div>{formik.errors.password}</div> : null}
 
-          <Button
-            variant="contained"
-            color="primary"
-            // type="submit"
-            onClick={submitForm}
-          >
+          <Button variant="contained" color="primary" type="submit">
             Submit
           </Button>
         </form>
