@@ -29,6 +29,16 @@
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/authui/login.js"
+    ],
+    "/authui/register": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/authui/register.js"
+    ],
+    "/authui/register/error": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/authui/register/error.js"
     ]
   },
   "ampFirstPages": []
