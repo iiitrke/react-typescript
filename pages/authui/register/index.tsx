@@ -10,6 +10,8 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { registerService } from "../../../src/service/auth/register/registerService";
 
+import { RegisterSchema } from "../../../src/validations/register/register";
+
 import { User } from "@prisma/client";
 import { redirect } from "next/navigation";
 
@@ -30,23 +32,23 @@ const initialValues = {
   repassword: "ddd",
 };
 
-const RegisterSchema = Yup.object().shape({
-  name: Yup.string().required("Name is Required"),
-  email: Yup.string()
-    .email("Invalid email Address format")
-    .required("Email is Required"),
+// const RegisterSchema = Yup.object().shape({
+//   name: Yup.string().required("Name is Required"),
+//   email: Yup.string()
+//     .email("Invalid email Address format")
+//     .required("Email is Required"),
 
-  password: Yup.string()
-    .min(3, "Password must be 3 character at minimum")
-    .required("Password is Required"),
+//   password: Yup.string()
+//     .min(3, "Password must be 3 character at minimum")
+//     .required("Password is Required"),
 
-  repassword: Yup.string()
-    .min(3, "Password must be 3 character at minimum")
-    .required("Password is Required")
-    .test("password-match", "Password must match", function (value) {
-      return this.parent.password === value;
-    }),
-});
+//   repassword: Yup.string()
+//     .min(3, "Password must be 3 character at minimum")
+//     .required("Password is Required")
+//     .test("password-match", "Password must match", function (value) {
+//       return this.parent.password === value;
+//     }),
+// });
 export default function Page() {
   const { push } = useRouter();
   const formik = useFormik({

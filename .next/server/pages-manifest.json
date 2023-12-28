@@ -2,8 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/authui/login": "pages/authui/login.js",
-  "/authui/register/success": "pages/authui/register/success.js",
+  "/authui/register": "pages/authui/register.js",
   "/authui/register/error": "pages/authui/register/error.js",
-  "/authui/register": "pages/authui/register.js"
+  "/": "pages/index.js"
 }
