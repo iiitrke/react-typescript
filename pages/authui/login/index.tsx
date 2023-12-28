@@ -10,6 +10,7 @@ import { error } from "console";
 import { Field, ErrorMessage, useFormik } from "formik";
 import * as Yup from "yup";
 import { AxiosError, AxiosResponse } from "axios";
+import { signIn } from "next-auth/react";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -56,22 +57,14 @@ export default function Page(props) {
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: LoginSchema,
-    onSubmit: (formsData, { setSubmitting, resetForm }) => {
-      setTimeout(
-        () => {
-          const result = loginService.getJWT(formsData);
-          result
-            .then((data) => console.log(data))
-            .catch((e: AxiosError) =>
-              console.log("error in data fetching", e, e.message)
-            );
-          setSubmitting(false);
-        },
-
-        2000
-      );
-
-      console.log(formsData);
+    onSubmit: async (formsData, { setSubmitting, resetForm }) => {
+      alert("hanle");
+      // const response = await signIn("credentials", {
+      //   email: formsData.email,
+      //   password: formsData.password,
+      //   redirect: false,
+      // });
+      setSubmitting(false);
     },
   });
 
