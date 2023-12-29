@@ -54,3 +54,7 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 ### openssl rand -base64 32
 
 ### sudo npm i --save-dev @types/bcryptjs
+
+# Prisma
+
+### npx prisma generate
