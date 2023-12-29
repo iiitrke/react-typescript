@@ -19,20 +19,20 @@ export const authOptions: NextAuthOptions = {
       clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
     }),
 
-    // CredentialsProvider({
-    //   credentials: {
-    //     usename: { label: "User Name", type: "text" },
-    //     email: { label: "Email", type: "email" },
-    //     password: { label: "Password", type: "password" },
-    //   },
-    //   async authorize(credentials) {
-    //     if (!credentials.email || !credentials.password) {
-    //       throw new Error("Please enter email or password");
-    //     }
-    //     const user = { id: "1", email: "sss@dd", name: "ddd" };
-    //     return user;
-    //   },
-    // }),
+    CredentialsProvider({
+      credentials: {
+        usename: { label: "User Name", type: "text" },
+        email: { label: "Email", type: "email" },
+        password: { label: "Password", type: "password" },
+      },
+      async authorize(credentials) {
+        if (!credentials?.email || !credentials?.password) {
+          throw new Error("Please enter email or password");
+        }
+        const user = { id: "1", email: "sss@dd", name: "ddd" };
+        return user;
+      },
+    }),
     // ...add more providers here
   ],
   // callbacks: {
