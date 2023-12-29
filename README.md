@@ -50,3 +50,7 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 ####Next auth version 5 is not working
 
 ### sudo npm i next-auth@4.24.5;2 is working perfectly
+
+### openssl rand -base64 32
+
+### sudo npm i --save-dev @types/bcryptjs

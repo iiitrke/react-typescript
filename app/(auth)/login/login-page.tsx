@@ -37,18 +37,22 @@ export default function LoginPage() {
     initialValues: initialValues,
     validationSchema: LoginSchema,
     onSubmit: async (formsData, { setSubmitting, resetForm }) => {
-      // const response = await signIn("credentials", {
-      //   email: formsData.email,
-      //   password: formsData.password,
-      //   redirect: false,
-      // });
+      debugger;
+      console.log(formsData);
+
+      const response = await signIn("credentials", {
+        email: formsData.email,
+        password: formsData.password,
+        redirect: false,
+      });
+      console.log(response);
       setSubmitting(false);
     },
   });
 
-  const handleSubmit = async (e: any) => {
-    await signIn("github");
-  };
+  // const handleSubmit = async (e: any) => {
+  //   await signIn("github");
+  // };
   const [isClient, setIsClient] = useState(false);
   useEffect(() => {
     setIsClient(true);
@@ -97,16 +101,6 @@ export default function LoginPage() {
             {formik.isSubmitting ? "Submitting..." : "Submit"}
           </Button>
         </form>
-
-        <Button
-          variant="contained"
-          color="primary"
-          type="submit"
-          onClick={handleSubmit}
-        >
-          {" "}
-          Google Sign in{" "}
-        </Button>
       </Grid>
     </Grid>
   );

@@ -7,13 +7,11 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
-import React, { Ref, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { useFeaturedCourseAction } from "../../state/hooks/useFeaturedCourseAction";
 import { useTypedSeletor } from "../../state/hooks/useTypedSelector";
 import { FeaturedCourseModel } from "../../state/models/Featured-course.model";
 import "./featuredcoursecomp.css";
-import { log } from "console";
-import { stat } from "fs";
 const FeaturCouComp: React.FC = () => {
   const { featuredcoursesCre } = useFeaturedCourseAction();
   const { data, loading, error } = useTypedSeletor(
