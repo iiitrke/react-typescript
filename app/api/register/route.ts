@@ -1,11 +1,8 @@
-import { NextRequest, NextResponse } from "next/server";
-import { User } from "../../../src/generated/client";
-import prisma from "../../../src/lib/prisma";
-import { RegisterSchema } from "../../../src/validations/register/register";
 import bcrypt from "bcryptjs";
+import { NextRequest, NextResponse } from "next/server";
+import prisma from "../../../src/lib/prisma";
 
 import * as Yup from "yup";
-import axios from "axios";
 
 export const validateInput = async <T>(
   schema: Yup.ObjectSchema<any>,
@@ -28,38 +25,46 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
+  console.log("IN POST FUNCTIN");
+
+  console.log("Reading JSON request body");
   const body: Request = await request.json();
+
+  console.log("Reading JSON request body111");
+  console.log(body);
   // return NextResponse.json({ name: "hhjjh" }, { status: 200 });
   try {
     const bodySchema = Yup.object({
       name: Yup.string().required().notOneOf(["admin"]).min(3, "size error"),
 
-      age: Yup.number()
-        .transform((value, original) =>
-          original == null || original === "" ? undefined : value
-        )
-        .required(),
+      // password: Yup.string()
+      //   .required()
+      //   .notOneOf(["admin"])
+      //   .min(3, "size error"),
+
+      // age: Yup.number()
+      //   .transform((value, original) =>
+      //     original == null || original === "" ? undefined : value
+      //   )
+      //   .required(),
     });
 
-    const validatedData = await validateInput<
-      Yup.Asserts<typeof RegisterSchema>
-    >(RegisterSchema, body);
-
+    const salt = bcrypt.genSaltSync(10);
     const record = {
       name: body.name,
       email: body.email,
+      password: bcrypt.hashSync(body.password, salt),
       emailVerified: new Date(),
       createdAt: new Date(),
       updatedAt: new Date(),
     };
-    const salt = bcrypt.genSaltSync(10);
-    validatedData.name = bcrypt.hashSync(validatedData.name, salt);
-    // validatedData.name = nameHashValue;
-    // const result = await prisma.user.create({ data: record });
 
-    // console.log(validatedData);
-    // console.log("In Post", validatedData);
-    return NextResponse.json({ result: validatedData }, { status: 200 });
+    const result = await prisma.user.create({ data: record });
+
+    const { password, ...noB } = result;
+
+    console.log("In Post", result);
+    return NextResponse.json({ result: noB }, { status: 200 });
   } catch (error: any) {
     return NextResponse.json(error, { status: 400 });
   }

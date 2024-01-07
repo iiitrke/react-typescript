@@ -13,7 +13,20 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import { useRouter } from "next/navigation";
+import { signOut, useSession } from "next-auth/react";
+import { link } from "fs";
+
+// import {} from "next-auth"
 // import { Link } from "react-router-dom";
+
+const enum IDS {
+  PROFILE = "profile",
+  SIGNUP = "signup",
+  DASHBOARD = "dashboard",
+  LOGOUT = "logout",
+  LOGIN = "login",
+}
 
 interface IPages {
   name: string;
@@ -29,9 +42,21 @@ const pages: IPages[] = [
   { name: "About us", link: "about" },
 ];
 
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const settings = [
+  { id: IDS.PROFILE, name: "Profile", link: "/private" },
+  { id: IDS.DASHBOARD, name: "Dashboard" },
+  { id: IDS.LOGOUT, name: "Logout" },
+  { id: IDS.LOGIN, name: "Login", link: "/login" },
+
+  { id: IDS.SIGNUP, name: "Signup ", link: "/register" },
+];
 
 function AppBarFC() {
+  const { data, status } = useSession();
+
+  const [isLoggedIn, setIsLoggedIn] = React.useState<boolean>(false);
+
+  const router = useRouter();
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -50,9 +75,35 @@ function AppBarFC() {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
+  const handleCloseUserMenu = (e: React.FormEvent, item: any) => {
+    e.preventDefault();
+
+    console.log("ITEM", item);
+    if (item === "backdropClick") {
+      setAnchorElUser(null);
+      return;
+    }
+    console.log(e.target, item.link);
+    if (item.id === IDS.LOGOUT) {
+      const result = signOut();
+      result.then(() => {
+        router.push("/");
+        setIsLoggedIn(false);
+      });
+
+      return;
+    }
+    router.push(item.link);
     setAnchorElUser(null);
   };
+
+  React.useEffect(() => {
+    if (status === "authenticated") {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  });
 
   return (
     <AppBar position="static">
@@ -180,11 +231,64 @@ function AppBarFC() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+              {/* { id: IDS.PROFILE, name: "Profile", link: "/private" },
+  { id: IDS.SIGNUP, name: "Signup ", link: "/register" },
+  { id: IDS.DASHBOARD, name: "Dashboard" },
+  { id: IDS.LOGOUT, name: "Logout" },
+  { id: IDS.LOGIN, name: "Login", link: "/login" }, */}
+              {isLoggedIn && (
+                <MenuItem
+                  key={settings[0].id}
+                  onClick={(e) => {
+                    handleCloseUserMenu(e, settings[0]);
+                  }}
+                >
+                  <Typography textAlign="center">{settings[0].name}</Typography>
                 </MenuItem>
-              ))}
+              )}
+
+              {isLoggedIn && (
+                <MenuItem
+                  key={settings[1].id}
+                  onClick={(e) => {
+                    handleCloseUserMenu(e, settings[1]);
+                  }}
+                >
+                  <Typography textAlign="center">{settings[1].name}</Typography>
+                </MenuItem>
+              )}
+
+              {isLoggedIn && (
+                <MenuItem
+                  key={settings[2].id}
+                  onClick={(e) => {
+                    handleCloseUserMenu(e, settings[2]);
+                  }}
+                >
+                  <Typography textAlign="center">{settings[2].name}</Typography>
+                </MenuItem>
+              )}
+
+              {!isLoggedIn && (
+                <MenuItem
+                  key={settings[3].id}
+                  onClick={(e) => {
+                    handleCloseUserMenu(e, settings[3]);
+                  }}
+                >
+                  <Typography textAlign="center">{settings[3].name}</Typography>
+                </MenuItem>
+              )}
+              {!isLoggedIn && (
+                <MenuItem
+                  key={settings[4].id}
+                  onClick={(e) => {
+                    handleCloseUserMenu(e, settings[4]);
+                  }}
+                >
+                  <Typography textAlign="center">{settings[4].name}</Typography>
+                </MenuItem>
+              )}
             </Menu>
           </Box>
         </Toolbar>

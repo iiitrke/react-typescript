@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-const success = () => {
+const ErrorPage = () => {
   return (
     <div>
       <p>Error</p>
@@ -8,4 +8,4 @@ const success = () => {
   );
 };
 
-export default success;
+export default ErrorPage;

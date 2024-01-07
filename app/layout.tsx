@@ -5,6 +5,8 @@ import { AppBarFC } from "../src/components/navbar/AppBarFC";
 import { FooterAsFC } from "../src/components/Footer";
 import { Provider } from "react-redux";
 import { store } from "../src/state";
+import { SessionProvider } from "next-auth/react";
+import { AuthProvider } from "../src/components/auth-provider.tsx/AuthProvider";
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -12,9 +14,11 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
       <body suppressHydrationWarning={true}>
         {" "}
         <Provider store={store}>
-          <AppBarFC />
-          {children}
-          {/* <FooterAsFC /> */}
+          <AuthProvider>
+            <AppBarFC />
+            {children}
+            {/* <FooterAsFC /> */}
+          </AuthProvider>
         </Provider>
       </body>
     </html>

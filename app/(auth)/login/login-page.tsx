@@ -6,9 +6,10 @@ import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
 import { useFormik, Form } from "formik";
 import * as Yup from "yup";
-import { signIn } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 import { LoadingAsFC } from "../../../src/components/loading/Loading";
+import { useRouter } from "next/navigation";
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
@@ -18,8 +19,8 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const initialValues = {
-  email: "",
-  password: "",
+  email: "sanjay1@ddd.dd",
+  password: "abcd",
 };
 
 const LoginSchema = Yup.object().shape({
@@ -33,11 +34,17 @@ const LoginSchema = Yup.object().shape({
 });
 
 export default function LoginPage() {
+  const { data, status, update } = useSession();
+
+  const router = useRouter();
+
+  const handleGithub = async () => {
+    const result = await signIn("github", { callbackUrl: "/" });
+  };
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: LoginSchema,
     onSubmit: async (formsData, { setSubmitting, resetForm }) => {
-      debugger;
       console.log(formsData);
 
       const response = await signIn("credentials", {
@@ -45,6 +52,10 @@ export default function LoginPage() {
         password: formsData.password,
         redirect: false,
       });
+      console.log(response);
+      if (response?.ok) {
+        router.push("/success");
+      }
       console.log(response);
       setSubmitting(false);
     },
@@ -61,6 +72,7 @@ export default function LoginPage() {
 
   return (
     <Grid container spacing={2}>
+      {`LOGIN ${status} ${data?.user?.email}`}
       <Grid item xs={12} sm={12} md={12}>
         <form onSubmit={formik.handleSubmit}>
           <Grid>
@@ -101,6 +113,10 @@ export default function LoginPage() {
             {formik.isSubmitting ? "Submitting..." : "Submit"}
           </Button>
         </form>
+
+        <Button variant="contained" color="primary" onClick={handleGithub}>
+          GitHub
+        </Button>
       </Grid>
     </Grid>
   );

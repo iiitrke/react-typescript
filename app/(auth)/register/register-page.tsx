@@ -52,9 +52,7 @@ export default function RegisterPage() {
     onSubmit: (formsData, { setSubmitting, resetForm }) => {
       setSubmitting(true);
       const result = registerService.save(formsData);
-      result
-        .then((r) => push("/authui/register/success"))
-        .catch((e) => push("/authui/register/error"));
+      result.then((r) => push("/success")).catch((e) => push("/error"));
       setSubmitting(false);
     },
   });

@@ -58,3 +58,23 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 # Prisma
 
 ### npx prisma generate
+
+# Prisma error - Added binaryTargets
+
+generator client {
+provider = "prisma-client-js"
+binaryTargets = ["native", "darwin-arm64"]
+output = "../src/generated/client"
+}
+
+#### http://localhost:3000/api/auth/signin
+
+## npm i limiter
+
+## npm i next-auth @types/next-auth jsonwebtoken @types/jsonwebtoken
+
+https://next-auth.js.org/getting-started/rest-api
+
+/api/auth/csrf
+
+https://reacthustle.com/blog/extend-user-session-nextauth-typescript?expand_article=1
